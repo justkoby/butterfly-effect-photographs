@@ -1,0 +1,94 @@
+/* ── STUDIO RENTALS ───────────────────────────────────────── */
+.studio-rentals {
+  padding: 8rem 2rem;
+  background: var(--dark-grey);
+  border-top: 1px solid rgba(255,107,157,0.1);
+}
+
+.studio-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+/* MEDIA */
+.studio-media { position: relative; }
+
+.studio-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.studio-img-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(26,26,26,0.4));
+  z-index: 1;
+}
+.studio-img-wrap img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.studio-img-wrap:hover img { transform: scale(1.03); }
+
+.studio-location-tag {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: rgba(245,243,240,0.8);
+  background: rgba(26,26,26,0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* CONTENT */
+.studio-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  margin: 0.5rem 0 1.2rem;
+  color: var(--light);
+}
+.studio-title em { font-style: italic; color: var(--pink); }
+
+.studio-desc {
+  font-size: 0.9rem;
+  color: rgba(245,243,240,0.7);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.studio-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.studio-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: rgba(245,243,240,0.75);
+}
+.feature-dot {
+  flex-shrink: 0;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.studio-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .studio-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .studio-rentals { padding: 5rem 1.5rem; }
+}

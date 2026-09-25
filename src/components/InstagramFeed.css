@@ -1,0 +1,43 @@
+/* ── INSTAGRAM FEED ───────────────────────────────────────── */
+.ig-section {
+  padding: 7rem 2rem;
+  background: var(--charcoal);
+  border-top: 1px solid rgba(255,107,157,0.08);
+}
+
+.ig-inner { max-width: 1100px; margin: 0 auto; }
+
+.ig-header { text-align: center; margin-bottom: 3.5rem; }
+
+.ig-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  margin: 0.5rem 0 1rem;
+  color: var(--light);
+}
+.ig-title em { font-style: italic; color: var(--pink); }
+
+.ig-sub {
+  font-size: 0.9rem;
+  color: rgba(245,243,240,0.6);
+  max-width: 420px;
+  margin: 0 auto 1.5rem;
+}
+
+.ig-follow-btn {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pink);
+  border-bottom: 1px solid rgba(255,107,157,0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.ig-follow-btn:hover { border-color: var(--pink); }
+
+.ig-widget-wrap {
+  border: 1px solid rgba(255,107,157,0.08);
+  padding: 1rem;
+  background: var(--dark-grey);
+}

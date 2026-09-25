@@ -1,0 +1,76 @@
+/* ── INFINITE GALLERY ─────────────────────────────────────── */
+.infinite-gallery {
+  overflow: hidden;
+  padding: 5rem 0;
+  background: var(--dark-grey);
+  position: relative;
+}
+
+.ig-label {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gallery-track-wrap {
+  overflow: hidden;
+  margin-bottom: 1rem;
+  cursor: grab;
+}
+.gallery-track-wrap:active { cursor: grabbing; }
+
+.gallery-track {
+  display: flex;
+  gap: 1rem;
+  will-change: transform;
+  width: max-content;
+}
+
+.gallery-item {
+  flex-shrink: 0;
+  width: 320px;
+  height: 420px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.gallery-track-wrap:hover .gallery-item img,
+.gallery-item:focus-within img {
+  transform: scale(1.06);
+}
+
+/* Fade edges */
+.infinite-gallery::before,
+.infinite-gallery::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.infinite-gallery::before {
+  left: 0;
+  background: linear-gradient(to right, var(--dark-grey), transparent);
+}
+.infinite-gallery::after {
+  right: 0;
+  background: linear-gradient(to left, var(--dark-grey), transparent);
+}
+
+@media (max-width: 600px) {
+  .gallery-item { width: 220px; height: 290px; }
+  .infinite-gallery { padding: 3.5rem 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track { transform: none !important; }
+  .gallery-item img { transition: none; }
+}
