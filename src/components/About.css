@@ -67,22 +67,8 @@
   font-style: italic;
   font-size: 1.1rem;
   color: var(--pink);
-  margin: 1.5rem 0 2rem;
+  margin: 1.5rem 0 1.75rem;
 }
-
-.about-stats {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  border-top: 1px solid rgba(245,243,240,0.1);
-  border-bottom: 1px solid rgba(245,243,240,0.1);
-  padding: 1.5rem 0;
-  margin-bottom: 2rem;
-}
-.stat { display: flex; flex-direction: column; gap: 0.2rem; }
-.stat-num { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 300; color: var(--light); }
-.stat-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
-.stat-div { width: 1px; height: 36px; background: rgba(245,243,240,0.15); }
 
 .sister-link {
   font-size: 0.78rem;

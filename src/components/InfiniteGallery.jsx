@@ -4,17 +4,17 @@ import "./InfiniteGallery.css";
 // Curated image sequence for the scrolling strip
 const GALLERY_IMAGES = [
   { src: "/images/portrait-img.jpg",      alt: "Fine art portrait" },
-  { src: "/images/port-6.jpg",            alt: "Creative editorial" },
+  { src: "/images/wedding-image.jpg",     alt: "Traditional wedding couple" },
+  { src: "/images/fine-art-01.webp",      alt: "Fine art portrait with veil" },
+  { src: "/images/weddingsss.jpg",        alt: "Bridal portrait" },
+  { src: "/images/portrait-img-2.jpg",    alt: "Studio portrait" },
+  { src: "/images/birthday-shoot-4.jpg",  alt: "Editorial portrait" },
   { src: "/images/experience-image.webp", alt: "Couple session" },
-  { src: "/images/port-1.jpg",            alt: "Studio portrait" },
-  { src: "/images/fine-art-01.webp",      alt: "Fine art photography" },
-  { src: "/images/portrait-img-2.jpg",    alt: "Lifestyle portrait" },
-  { src: "/images/port-4.jpg",            alt: "Product photography" },
-  { src: "/images/structure-01.webp",     alt: "Concept shoot" },
+  { src: "/images/port-6.jpg",            alt: "Creative editorial" },
+  { src: "/images/birthday-shoot-2.jpg",  alt: "Birthday shoot" },
   { src: "/images/portrait-img-3.jpg",    alt: "Beauty portrait" },
+  { src: "/images/port-1.jpg",            alt: "Studio session" },
   { src: "/images/port-7.jpg",            alt: "Glam shoot" },
-  { src: "/images/corporate-01.webp",     alt: "Corporate photography" },
-  { src: "/images/port-9.jpg",            alt: "Editorial portrait" },
 ];
 
 function GalleryTrack({ images, speed = 40, dir = 1 }) {
@@ -74,7 +74,6 @@ export default function InfiniteGallery() {
         <span className="kicker">Selected Work</span>
       </div>
       <GalleryTrack images={GALLERY_IMAGES} speed={36} dir={1} />
-      <GalleryTrack images={[...GALLERY_IMAGES].reverse()} speed={28} dir={-1} />
     </section>
   );
 }

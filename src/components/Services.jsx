@@ -4,60 +4,59 @@ const BOOK_URL = "https://butterflyn21t.setmore.com/butterfly";
 
 const SERVICES = [
   {
-    icon: "◉",
-    title: "Portrait & Studio Sessions",
-    desc: "Fine art, fashion and concept-driven portraits in our fully equipped Adenta studio with professional lighting and multiple backdrops.",
+    title: "Photography",
+    desc: "From getting ready to the final dance, we document the people, details, emotions, and in-between moments without turning your day into a photoshoot.",
+    image: "/images/weddingsss.jpg",
+    link: BOOK_URL,
   },
   {
-    icon: "◎",
-    title: "Wedding Photography",
-    desc: "Soft romance, editorial candids and real moments — capturing your celebration with authenticity and attention to detail.",
+    title: "Film",
+    desc: "Our wedding films bring your celebration back to life through movement, sound, emotion, and the little moments that might otherwise fade with time.",
+    image: "/images/experience-image.webp",
+    link: BOOK_URL,
   },
   {
-    icon: "◈",
-    title: "Corporate & Commercial",
-    desc: "Clean, styled images for brands and campaigns. Headshots, product photography and marketing visuals for your business.",
-  },
-  {
-    icon: "◇",
-    title: "Birthday & Events",
-    desc: "Playful, celebratory portraits and candid event coverage that bring the energy of every occasion to life.",
-  },
-  {
-    icon: "◆",
-    title: "Fitness & Lifestyle",
-    desc: "On-location storytelling across Accra and beyond — everyday moments, styled yet honest and relaxed.",
-  },
-  {
-    icon: "◉",
-    title: "Videography",
-    desc: "Behind-the-scenes reels, creative short films and brand videos crafted with the same editorial eye as our photography.",
+    title: "Photo + Film",
+    desc: "Combine timeless photography with cinematic film to preserve both the moments you see and the feelings you remember - from the quietest glance to the loudest celebration.",
+    image: "/images/wedding-image.jpg",
+    link: BOOK_URL,
   },
 ];
 
 export default function Services() {
   return (
-    <section className="services" id="services" aria-label="Photography services">
+    <section className="services" id="services" aria-label="Photography and film services">
       <div className="services-inner">
         <div className="services-header">
-          <p className="kicker">What We Offer</p>
+          <p className="kicker">Services</p>
           <h2 className="services-title">
-            Photography<br /><em>Services</em>
+            What We <em>Offer</em>
           </h2>
-          <p className="services-intro">
-            Every session is built around your story — curated, intentional and crafted for impact.
-          </p>
         </div>
 
-        <div className="services-grid">
+        <div className="services-deck">
           {SERVICES.map((s, i) => (
-            <div className="service-card" key={i}>
-              <span className="service-icon" aria-hidden="true">{s.icon}</span>
-              <h3 className="service-name">{s.title}</h3>
-              <p className="service-desc">{s.desc}</p>
-              <a href={BOOK_URL} target="_blank" rel="noreferrer" className="service-cta">
-                Book Now →
-              </a>
+            <div className="service-deck-card" key={i}>
+              <div className="service-card-img-wrap">
+                <img src={s.image} alt={s.title} loading="lazy" />
+              </div>
+
+              <div className="service-card-title-wrap">
+                <h3 className="service-card-title">{s.title}</h3>
+              </div>
+
+              <div className="service-card-body-wrap">
+                <p className="service-card-desc">{s.desc}</p>
+                <div className="service-card-divider" aria-hidden="true" />
+                <a
+                  href={s.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="service-pill-btn"
+                >
+                  <span className="pill-dot" /> Contact
+                </a>
+              </div>
             </div>
           ))}
         </div>

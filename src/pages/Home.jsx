@@ -9,6 +9,7 @@ import StudioRentals from "../components/StudioRentals";
 import InstagramFeed from "../components/InstagramFeed";
 import BookingCTA from "../components/BookingCTA";
 import Footer from "../components/Footer";
+import "./Home.css";
 
 export default function Home() {
   useEffect(() => {
@@ -18,15 +19,22 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
-        <Hero />
-        <InfiniteGallery />
-        <About />
-        <Services />
-        <VideoShowcase />
-        <StudioRentals />
-        <InstagramFeed />
-        <BookingCTA />
+      <main className="home-main">
+        {/* Sticky Hero section: pinned during initial scroll */}
+        <div className="hero-pinned-wrapper">
+          <Hero />
+        </div>
+
+        {/* Rising opaque layer that covers hero cleanly */}
+        <div className="layered-content-deck">
+          <InfiniteGallery />
+          <About />
+          <Services />
+          <VideoShowcase />
+          <StudioRentals />
+          <InstagramFeed />
+          <BookingCTA />
+        </div>
       </main>
       <Footer />
     </>

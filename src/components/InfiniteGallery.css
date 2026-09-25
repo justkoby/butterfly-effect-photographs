@@ -1,19 +1,22 @@
 /* ── INFINITE GALLERY ─────────────────────────────────────── */
 .infinite-gallery {
   overflow: hidden;
-  padding: 5rem 0;
+  padding: 4rem 0 4.5rem;
   background: var(--dark-grey);
   position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.7);
 }
 
 .ig-label {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .gallery-track-wrap {
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   cursor: grab;
 }
 .gallery-track-wrap:active { cursor: grabbing; }
@@ -67,10 +70,11 @@
 
 @media (max-width: 600px) {
   .gallery-item { width: 220px; height: 290px; }
-  .infinite-gallery { padding: 3.5rem 0; }
+  .infinite-gallery { padding: 3.5rem 0; box-shadow: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .infinite-gallery { box-shadow: none; }
   .gallery-track { transform: none !important; }
   .gallery-item img { transition: none; }
 }

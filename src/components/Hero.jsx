@@ -54,13 +54,10 @@ export default function Hero() {
 
       {/* Content */}
       <div className="hero-content">
-        <p className="kicker">Butterfly Effect Photographs</p>
         <h1 className="hero-title">
-          Where Every<br />
-          <em>Click</em> Tells<br />
-          a Story.
+          <span className="title-line">Where Every <br className="br-desktop" /><em>Click</em></span>{" "}
+          <span className="title-line">Tells <br className="br-desktop" />a Story.</span>
         </h1>
-        <p className="hero-subtitle">Fine art photography &amp; studio rentals · Adenta, Accra, Ghana</p>
         <div className="hero-ctas">
           <a href={BOOK_URL} target="_blank" rel="noreferrer" className="btn btn-primary">
             Book a Session

@@ -13,7 +13,6 @@ export default function About() {
             />
             <div className="about-img-accent" aria-hidden="true" />
           </div>
-          <p className="about-img-caption">Adenta, Accra, Ghana</p>
         </div>
 
         <div className="about-text-col">
@@ -37,14 +36,6 @@ export default function About() {
             <em>Kelvin Vincent</em>.
           </p>
           <p className="about-signature">Creative Diligent Services</p>
-
-          <div className="about-stats">
-            <div className="stat"><span className="stat-num">5+</span><span className="stat-label">Years Active</span></div>
-            <div className="stat-div" aria-hidden="true" />
-            <div className="stat"><span className="stat-num">∞</span><span className="stat-label">Stories Told</span></div>
-            <div className="stat-div" aria-hidden="true" />
-            <div className="stat"><span className="stat-num">GH</span><span className="stat-label">Accra-Based</span></div>
-          </div>
 
           <div className="about-links">
             <a href="https://butterflyeffectconcepts.com" target="_blank" rel="noreferrer" className="sister-link">

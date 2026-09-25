@@ -34,6 +34,16 @@ export default function Navbar() {
 
         {/* RIGHT LINKS */}
         <ul className="nav-links nav-right">
+          <li>
+            <a
+              className="nav-link"
+              href="https://butterflyeffectconcepts.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Design
+            </a>
+          </li>
           <li><Link className="nav-link" to="/makeup">Makeup</Link></li>
           <li><Link className="nav-link" to="/#contact">Contact</Link></li>
           <li>
@@ -57,13 +67,29 @@ export default function Navbar() {
       {/* MOBILE MENU */}
       <div className={`mobile-menu${open ? " mobile-menu-open" : ""}`} aria-hidden={!open}>
         <ul>
-          <li><Link to="/#about">About</Link></li>
-          <li><Link to="/portfolio">Portfolio</Link></li>
-          <li><Link to="/#services">Services</Link></li>
-          <li><Link to="/makeup">Makeup</Link></li>
-          <li><Link to="/#contact">Contact</Link></li>
+          <li><Link to="/#about" onClick={() => setOpen(false)}>About</Link></li>
+          <li><Link to="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link></li>
+          <li><Link to="/#services" onClick={() => setOpen(false)}>Services</Link></li>
           <li>
-            <a href={BOOK_URL} target="_blank" rel="noreferrer" className="mobile-book-btn">
+            <a
+              href="https://butterflyeffectconcepts.com/"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+            >
+              Design
+            </a>
+          </li>
+          <li><Link to="/makeup" onClick={() => setOpen(false)}>Makeup</Link></li>
+          <li><Link to="/#contact" onClick={() => setOpen(false)}>Contact</Link></li>
+          <li>
+            <a
+              href={BOOK_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="mobile-book-btn"
+              onClick={() => setOpen(false)}
+            >
               Book Now
             </a>
           </li>
