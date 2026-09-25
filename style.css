@@ -1,0 +1,1570 @@
+/* ===========================
+   FONT IMPORTS & ROOT VARS
+=========================== */
+
+/* Inter fallback import (Playfair is loaded in HTML) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+@font-face {
+    font-family: 'Saol Display';
+    src: url('path/to/your/font/SaolDisplay-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* We map display headings to Playfair via --saol */
+:root {
+    --saol: 'Playfair Display', serif;
+    --inter: 'Inter', sans-serif;
+    --dark-grey: #2C2C2C;
+    --charcoal: #1A1A1A;
+    --primary-pink: #FF6B9D;
+}
+
+/* ===========================
+   RESET & BASE
+=========================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--inter);
+    color: #fff;
+    background-color: var(--dark-grey);
+    overflow-x: hidden;
+}
+
+.section-title {
+    font-family: var(--saol);
+    font-weight: normal;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===========================
+   NAVBAR (DESKTOP + MOBILE)
+=========================== */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 15px 0;
+    z-index: 1030;
+    transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* When scrolled (JS adds .scrolled) */
+.navbar.scrolled {
+    position: fixed;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.navbar.menu-open {
+    /* Optional: style differently when mobile menu is open */
+}
+
+/* Navbar logo image */
+.nav-logo {
+    height: 100px;         /* bigger on desktop */
+    width: auto;
+    display: block;
+    transition: height 0.2s ease;
+}
+
+.navbar.scrolled .nav-logo {
+    height: 44px;         /* slightly smaller when scrolled */
+}
+
+/* Brand text (only used if image not present) */
+.navbar-brand {
+    font-family: var(--saol);
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 6px;
+}
+
+/* Links */
+.navbar-nav .nav-link {
+    color: white;
+    font-weight: 400;
+    margin: 0 15px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+    font-family: var(--inter);
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+/* Underline hover */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-pink);
+    transition: width 0.3s ease-in-out;
+}
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Toggler */
+.navbar-toggler {
+    z-index: 1050;
+    color: white !important;
+    font-size: 1.5rem;
+    border: none;
+}
+.navbar-toggler:focus { box-shadow: none; }
+
+/* Icon toggle using aria-expanded */
+.navbar-toggler .fa-xmark { display: none; }
+.navbar-toggler[aria-expanded="true"] .fa-bars { display: none; }
+.navbar-toggler[aria-expanded="true"] .fa-xmark { display: inline-block; }
+.navbar-toggler[aria-expanded="false"] .fa-bars { display: inline-block; }
+.navbar-toggler[aria-expanded="false"] .fa-xmark { display: none; }
+
+/* Nav Book Now button */
+.nav-book-btn {
+    border: 2px solid var(--primary-pink);
+    color: var(--primary-pink);
+    background-color: transparent;
+    padding: 8px 22px;
+    border-radius: 999px;
+    font-family: var(--inter);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.nav-book-btn:hover {
+    background-color: var(--primary-pink);
+    color: var(--charcoal);
+}
+.navbar.scrolled .nav-book-btn {
+    border-color: var(--primary-pink);
+    background-color: var(--primary-pink);
+    color: var(--charcoal);
+}
+
+/* Desktop alignment */
+@media (min-width: 992px) {
+    .navbar-collapse { justify-content: center; }
+    .navbar-brand.d-lg-block { margin: 0 4rem; }
+}
+
+/* MOBILE NAV */
+@media (max-width: 991.98px) {
+    .navbar {
+        position: fixed;
+        background: rgba(26, 26, 26, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-collapse {
+        background-color: rgba(26,26,26,0.98);
+        padding: 1.5rem 1rem;
+    }
+
+    .navbar-collapse .navbar-nav {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-collapse .nav-link {
+        font-size: 1.4rem;
+        margin: 0.75rem 0;
+    }
+
+    .navbar-collapse .nav-book-btn {
+        width: 70%;
+        max-width: 260px;
+        margin: 1.5rem auto 0;
+        padding: 12px 0;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-logo {
+        height: 42px;      /* bigger on mobile than before */
+    }
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero-section {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(26, 26, 26, 0.45);
+    z-index: 2;
+}
+#heroCarousel,
+.carousel-inner,
+.carousel-item {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.carousel-item picture,
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.05);
+    transition: transform 6s ease;
+}
+.carousel-item.active img {
+    transform: scale(1);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 10;
+    max-width: 800px;
+    padding: 0 20px;
+    animation: heroFadeUp 1.2s ease-out 0.2s both;
+}
+.hero-title {
+    font-family: var(--saol);
+    font-size: 4.5rem;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+/* ===========================
+   SLIDE INDICATORS
+=========================== */
+.slide-indicators {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 15;
+}
+.slide-indicator {
+    width: 40px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.slide-indicator.active {
+    background: var(--primary-pink);
+    transform: scaleX(1.2);
+}
+
+/* ===========================
+   BUTTONS (generic)
+=========================== */
+.btn {
+    padding: 12px 30px;
+    font-family: var(--inter);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+.btn-outline-light {
+    border: 2px solid #fff;
+    color: #fff;
+}
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: var(--charcoal);
+}
+.btn-light-solid {
+    background-color: transparent;
+    border: 2px solid var(--primary-pink);
+    color: var(--primary-pink);
+    text-decoration: none;
+}
+.btn-light-solid:hover {
+    background-color: var(--primary-pink);
+    color: var(--dark-grey);
+}
+
+/* ===========================
+   FEATURES SECTION
+=========================== */
+#features {
+    background-color: var(--charcoal);
+}
+#features .text-box {
+    min-height: 400px;
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#features .text-box-content {
+    max-width: 500px;
+}
+#features .text-box-content p {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+}
+#features .feature-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 500px;
+    transition: transform 0.5s ease;
+}
+#features .feature-image:hover {
+    transform: scale(1.03);
+}
+
+/* ===========================
+   PORTFOLIO SECTION (HOME)
+=========================== */
+.portfolio-card {
+    position: relative;
+    display: block;
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.portfolio-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%);
+    transition: opacity 0.4s ease;
+}
+.portfolio-card:hover::after {
+    opacity: 0.5;
+}
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+.portfolio-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.portfolio-card:hover .portfolio-content {
+    opacity: 1;
+    transform: translate(-50%, -55%);
+}
+.portfolio-title {
+    font-family: var(--saol);
+    font-size: 3rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.portfolio-subtitle {
+    font-family: var(--inter);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.portfolio-creator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--inter);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+    transition: opacity 0.4s ease;
+}
+.portfolio-card:hover .portfolio-creator {
+    opacity: 0;
+}
+
+/* ===========================
+   INFO SECTION (Studio Rentals)
+=========================== */
+.info-section {
+    background-color: var(--charcoal);
+}
+.info-section .info-box {
+    padding: 4rem;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.info-section .info-box-content {
+    max-width: 500px;
+}
+.info-section .section-title {
+    color: var(--primary-pink);
+}
+.info-section p {
+    font-family: var(--inter);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+.info-section .info-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 500px;
+    transition: transform 0.6s ease;
+}
+.info-section .info-image:hover {
+    transform: scale(1.03);
+}
+
+/* ===========================
+   ABOUT SECTION
+=========================== */
+#about {
+    padding: 100px 0;
+    background-color: var(--charcoal);
+}
+.about-image-wrapper {
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: floatSoft 6s ease-in-out infinite;
+}
+.about-title {
+    font-family: var(--saol);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-pink);
+}
+.about-subtitle {
+    color: var(--primary-pink);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+.about-content p {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+}
+.about-signature {
+    font-family: var(--saol);
+    font-size: 1.75rem;
+    color: var(--primary-pink);
+    margin-top: 1rem;
+}
+
+/* ===========================
+   VIDEO SHOWCASE SECTION
+=========================== */
+.video-section {
+    background-color: var(--charcoal);
+}
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    /* Desktop: approx 1920x800 ratio (800/1920 = 0.4167) */
+    padding-top: 41.67%;
+    overflow: hidden;
+}
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+.video-overlay-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1.5rem;
+    z-index: 2;
+}
+.video-overlay-content .section-title {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+.video-overlay-content p {
+    max-width: 520px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.9);
+}
+
+@media (max-width: 767.98px) {
+    .video-wrapper {
+        padding-top: 56.25%; /* 16:9 for mobile */
+    }
+    .video-overlay-content .section-title {
+        font-size: 2rem;
+    }
+    .video-overlay-content p {
+        font-size: 0.95rem;
+    }
+}
+
+/* ===========================
+   INSTAGRAM FEED
+=========================== */
+#instagram-feed {
+    padding: 80px 0;
+    background-color: var(--charcoal);
+}
+.instagram-handle {
+    font-family: var(--saol);
+    font-size: 2rem;
+    color: var(--primary-pink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+.instagram-handle:hover {
+    color: var(--charcoal);
+    background-color: var(--primary-pink);
+    letter-spacing: 2px;
+    transform: translateY(-2px);
+}
+.ig-post img {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.ig-post:hover img {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+#main-footer {
+    background-color: var(--charcoal);
+    padding: 80px 0 0;
+    color: rgba(255,255,255,0.7);
+}
+.footer-heading {
+    font-family: var(--saol);
+    font-size: 1.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+.footer-logo {
+    max-width: 180px;
+}
+
+/* Social icons */
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--dark-grey);
+    color: #fff;
+    margin: 0 5px;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+}
+.social-icons a:hover {
+    background-color: var(--primary-pink);
+    color: var(--charcoal);
+}
+
+/* Footer links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-links li a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+.footer-links li a:hover {
+    color: #fff;
+    padding-left: 5px;
+}
+
+/* Contact + map + ride links */
+.footer-map iframe {
+    width: 100%;
+    min-height: 200px;
+    border: 0;
+    border-radius: 10px;
+}
+.ride-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+.ride-link {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+.ride-link:hover {
+    background-color: var(--primary-pink);
+    color: var(--charcoal);
+    border-color: var(--primary-pink);
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 60px;
+    font-size: 0.9rem;
+}
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Newsletter button if used */
+.btn-primary-pink {
+    background-color: var(--primary-pink);
+    border: 2px solid var(--primary-pink);
+    color: var(--charcoal);
+    font-weight: 700;
+}
+.btn-primary-pink:hover {
+    background-color: transparent;
+    color: var(--primary-pink);
+}
+
+/* ===========================
+   MOBILE FOOTER CTA BAR
+=========================== */
+.mobile-footer-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    gap: 8px;
+    z-index: 2000;
+}
+.cta-btn {
+    flex: 1;
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.4);
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.25s ease;
+}
+.cta-call {
+    background: var(--primary-pink);
+    border-color: var(--primary-pink);
+    color: var(--charcoal);
+}
+.cta-directions {
+    background: transparent;
+}
+.cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+@media (min-width: 768px) {
+    .mobile-footer-cta {
+        display: none;
+    }
+}
+
+/* ===========================
+   PORTFOLIO PAGE (CATEGORIES)
+=========================== */
+.portfolio-page {
+    background-color: var(--charcoal);
+}
+.portfolio-hero {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    background: radial-gradient(circle at top left, rgba(255,107,157,0.18) 0, transparent 55%), #111;
+}
+.portfolio-kicker {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+}
+.portfolio-heading {
+    font-family: var(--saol);
+    font-size: 3rem;
+    margin: 0.5rem 0 0.5rem;
+}
+.portfolio-intro {
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.8);
+}
+
+/* Category tiles */
+.portfolio-categories {
+    padding: 30px 0 70px;
+}
+.portfolio-cat-tile {
+    display: block;
+    background: radial-gradient(circle at top left, rgba(255,107,157,0.08) 0, transparent 60%), #181818;
+    border-radius: 18px;
+    padding: 1.4rem 1.6rem;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.55);
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.portfolio-cat-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 60px rgba(0,0,0,0.7);
+    border-color: var(--primary-pink);
+    background: radial-gradient(circle at top left, rgba(255,107,157,0.2) 0, transparent 70%), #151515;
+}
+.portfolio-cat-header h2 {
+    font-family: var(--saol);
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+.portfolio-cat-header p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.72);
+}
+.portfolio-cat-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-pink);
+}
+.portfolio-cat-cta::after {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: var(--primary-pink);
+    transition: width 0.25s ease;
+}
+.portfolio-cat-tile:hover .portfolio-cat-cta::after {
+    width: 28px;
+}
+
+/* Gallery layout used on portfolio pages */
+.portfolio-gallery-sections {
+    padding: 40px 0 80px;
+}
+.portfolio-gallery-block {
+    padding: 40px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+.gallery-heading {
+    font-family: var(--saol);
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+.gallery-subtitle {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1rem;
+}
+.gallery-placeholder {
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 40px 10px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+}
+
+/* ===========================
+   PORTFOLIO DETAIL PAGE
+=========================== */
+.portfolio-detail-page {
+    background-color: #0e0e0e;
+}
+.portfolio-detail-hero {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    background: radial-gradient(circle at top left, rgba(255,107,157,0.22) 0, transparent 60%), #111;
+}
+.portfolio-detail-heading {
+    font-family: var(--saol);
+    font-size: 2.8rem;
+    margin: 0.4rem 0 0.6rem;
+}
+.portfolio-detail-intro {
+    max-width: 520px;
+    color: rgba(255,255,255,0.82);
+}
+.back-to-all {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+}
+.back-to-all:hover {
+    color: var(--primary-pink);
+}
+
+/* Filter chips (non-functional for now) */
+.portfolio-detail-filters {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+.filter-chip {
+    border: 1px solid rgba(255,255,255,0.28);
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.filter-chip.active,
+.filter-chip:hover {
+    border-color: var(--primary-pink);
+    background: var(--primary-pink);
+    color: var(--charcoal);
+}
+
+/* Image grid */
+.portfolio-detail-grid {
+    padding: 40px 0 80px;
+}
+.portfolio-image-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #161616;
+}
+.portfolio-image-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.portfolio-image-card:hover img {
+    transform: scale(1.04);
+    opacity: 0.95;
+}
+
+/* ===========================
+   MAKEUP PAGE
+=========================== */
+.makeup-page {
+    background-color: var(--charcoal);
+}
+
+/* Hero */
+.makeup-hero {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    background: radial-gradient(circle at top left, #ffb6d8 0, transparent 55%), #1A1A1A;
+}
+.makeup-kicker {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+}
+.makeup-heading {
+    font-family: var(--saol);
+    font-size: 2.7rem;
+    margin: 0.75rem 0;
+}
+.makeup-subtitle {
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+}
+.makeup-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+.makeup-btn-primary {
+    background-color: var(--primary-pink);
+    border: 2px solid var(--primary-pink);
+    color: var(--charcoal);
+}
+.makeup-btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-pink);
+}
+.makeup-btn-ghost {
+    border: 2px solid rgba(255,255,255,0.4);
+    color: #fff;
+}
+.makeup-btn-ghost:hover {
+    border-color: var(--primary-pink);
+    color: var(--primary-pink);
+}
+.makeup-cta-group .btn i {
+    margin-right: 6px;
+}
+.makeup-secondary-links {
+    margin-top: 1rem;
+}
+.makeup-secondary-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+}
+.makeup-secondary-links a:hover {
+    color: var(--primary-pink);
+}
+.makeup-location {
+    margin-top: 0.5rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* Right hero card */
+.makeup-hero-card {
+    background: rgba(0,0,0,0.65);
+    border-radius: 18px;
+    padding: 1.75rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+}
+.makeup-hero-card .card-label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.75rem;
+}
+.makeup-pill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+}
+.makeup-pill-list li {
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px;
+    padding: 8px 14px;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.card-note {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+}
+
+/* Products section */
+.makeup-products {
+    padding: 60px 0 40px;
+    background-color: #121212;
+}
+.makeup-products .section-head p {
+    color: rgba(255,255,255,0.75);
+}
+.makeup-card {
+    background: #181818;
+    border-radius: 16px;
+    padding: 1.75rem;
+    height: 100%;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+}
+.makeup-card h3 {
+    font-family: var(--saol);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+.makeup-card p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.8);
+}
+.makeup-card .card-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--primary-pink);
+}
+.makeup-card .card-link:hover {
+    text-decoration: underline;
+}
+
+/* Location section */
+.makeup-location-section {
+    padding: 60px 0 80px;
+    background-color: var(--charcoal);
+}
+.makeup-location-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+.makeup-location-list li {
+    margin-bottom: 0.35rem;
+    color: rgba(255,255,255,0.85);
+}
+
+/* ===========================
+   RESPONSIVE TWEAKS
+=========================== */
+@media (max-width: 767.98px) {
+    .portfolio-heading {
+        font-size: 2.2rem;
+    }
+    .makeup-hero {
+        padding-top: 110px;
+    }
+    .makeup-heading {
+        font-size: 2.1rem;
+    }
+    .portfolio-detail-heading {
+        font-size: 2.2rem;
+    }
+}
+
+/* ===========================
+   KEYFRAME ANIMATIONS
+=========================== */
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatSoft {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* --- MAKEUP HERO SCROLLING GALLERY --- */
+
+/* ========== MAKEUP PAGE HERO ========== */
+
+.makeup-hero {
+    background: radial-gradient(circle at top left, #ffb6d8 0, transparent 55%), #1A1A1A;
+    padding-top: 110px;      /* room for navbar on mobile */
+    padding-bottom: 60px;
+}
+
+/* Desktop: lock hero to ~1920 x 800 feel */
+@media (min-width: 992px) {
+    .makeup-hero {
+        height: 800px;              /* target height */
+        padding-top: 120px;
+        padding-bottom: 80px;
+        display: flex;
+        align-items: center;        /* vertically center content */
+    }
+
+    .makeup-hero .container {
+        max-width: 1200px;
+    }
+}
+
+/* Text side stays as before */
+.makeup-kicker {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.makeup-heading {
+    font-family: var(--saol);
+    font-size: 2.7rem;
+    margin: 0.75rem 0;
+}
+
+.makeup-subtitle {
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+}
+
+/* ========== SCROLLING IMAGE GALLERY ========== */
+
+.makeup-hero-gallery {
+    display: flex;
+    gap: 18px;
+    width: 100%;
+    max-width: 620px;
+    margin-left: auto;
+    /* hero height is fixed; gallery uses a fixed window inside it */
+    height: 460px;
+    overflow: hidden;
+}
+
+@media (min-width: 1200px) {
+    .makeup-hero-gallery {
+        height: 520px;   /* a bit taller on big screens but still within 800px hero */
+    }
+}
+
+.mh-column {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.mh-track {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Each image tile */
+.mh-image {
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.mh-image img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Scroll animations: left column down, right column up */
+.mh-column-left .mh-track {
+    animation: mh-scroll-down 26s linear infinite;
+}
+
+.mh-column-right .mh-track {
+    animation: mh-scroll-up 26s linear infinite;
+}
+
+/* Keyframes keep the loop smooth inside the fixed hero height */
+@keyframes mh-scroll-down {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+@keyframes mh-scroll-up {
+    0%   { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
+}
+
+/* Mobile tweaks so it doesn’t feel huge on phones */
+@media (max-width: 767.98px) {
+    .makeup-hero {
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .makeup-heading {
+        font-size: 2.1rem;
+    }
+
+    .makeup-hero-gallery {
+        margin-top: 24px;
+        max-width: 100%;
+        height: 380px;
+    }
+
+    .mh-image img {
+        height: 220px;
+    }
+}
+
+
+/* Scroll animations (column 1 moves down, column 2 moves up) */
+.mh-column-left .mh-track {
+    animation: mh-scroll-down 26s linear infinite;
+}
+
+.mh-column-right .mh-track {
+    animation: mh-scroll-up 26s linear infinite;
+}
+
+/* Keyframes */
+@keyframes mh-scroll-down {
+    0%   { transform: translateY(-20%); }
+    100% { transform: translateY(0%); }
+}
+
+@keyframes mh-scroll-up {
+    0%   { transform: translateY(0%); }
+    100% { transform: translateY(-20%); }
+}
+
+/* Mobile tweaks */
+@media (max-width: 991.98px) {
+    .makeup-hero {
+        padding-top: 110px;
+        padding-bottom: 60px;
+    }
+
+    .makeup-hero-gallery {
+        margin-top: 1.75rem;
+        border-radius: 20px;
+        padding: 1.25rem;
+        min-height: 360px;
+    }
+}
+
+/* =========================================
+   PORTFOLIO HERO – SPLIT + INFINITE SCROLL
+========================================= */
+
+.portfolio-hero {
+    background: radial-gradient(circle at top left, rgba(255,107,157,0.18) 0, transparent 55%), #111;
+    padding-top: 120px;
+    padding-bottom: 40px;
+}
+
+.portfolio-hero .hero-split-row {
+    min-height: 800px;
+}
+
+@media (max-width: 991.98px) {
+    .portfolio-hero .hero-split-row {
+        min-height: auto;
+    }
+}
+
+/* Left copy */
+.portfolio-hero-copy {
+    max-width: 520px;
+}
+
+.portfolio-hero .portfolio-heading {
+    font-family: var(--saol);
+    font-size: 3rem;
+    margin: 0.5rem 0 0.5rem;
+}
+
+.portfolio-hero .portfolio-intro {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0;
+}
+
+/* Right image columns */
+.portfolio-hero-images {
+    height: 100%;
+    max-height: 800px;
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    padding: 0 24px 24px;
+}
+
+@media (max-width: 991.98px) {
+    .portfolio-hero-images {
+        margin-top: 2rem;
+        padding: 0 16px 16px;
+        max-height: 520px;
+    }
+}
+
+/* Column wrapper */
+.portfolio-image-column {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Track that actually moves */
+.portfolio-image-track {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: portfolioScrollUp 26s linear infinite;
+}
+
+/* Second column scrolls in opposite direction */
+.column-down .portfolio-image-track {
+    animation-name: portfolioScrollDown;
+}
+
+/* Individual image cards */
+.portfolio-hero-image {
+    flex: 1;
+    min-height: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+}
+
+.portfolio-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Infinite scroll keyframes – track contains two copies, so 50% = seamless loop point */
+@keyframes portfolioScrollUp {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+@keyframes portfolioScrollDown {
+    0%   { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
+}
+
+
+/* Optional: keep feature carousels nicely stretched in their column */
+.feature-carousel {
+    height: 100%;
+}
+
+.feature-carousel .carousel-inner,
+.feature-carousel .carousel-item {
+    height: 100%;
+}
+
+.feature-carousel .feature-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* ===========================
+   DESIGN PAGE HERO
+   (text right, endless scroll left)
+=========================== */
+
+.design-hero {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    background: radial-gradient(circle at top left, rgba(255,107,157,0.18) 0, transparent 55%), #111;
+    overflow: hidden;
+}
+
+/* Text side (similar to makeup hero) */
+.design-kicker {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.5rem;
+}
+
+.design-heading {
+    font-family: var(--saol);
+    font-size: 2.7rem;
+    margin: 0.75rem 0;
+}
+
+.design-subtitle {
+    color: rgba(255,255,255,0.85);
+    max-width: 520px;
+}
+
+.design-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.design-btn-primary {
+    background-color: var(--primary-pink);
+    border: 2px solid var(--primary-pink);
+    color: var(--charcoal);
+}
+
+.design-btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-pink);
+}
+
+.design-btn-ghost {
+    border: 2px solid rgba(255,255,255,0.4);
+    color: #fff;
+}
+
+.design-btn-ghost:hover {
+    border-color: var(--primary-pink);
+    color: var(--primary-pink);
+}
+
+.design-cta-group .btn i {
+    margin-right: 6px;
+}
+
+.design-secondary-links {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* LEFT: Endless scroll columns */
+.design-scroll-wrapper {
+    position: relative;
+    height: 480px;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+}
+
+.design-scroll-column {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #121212;
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.design-scroll-track {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* The images inside the columns */
+.design-scroll-column img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Endless scroll animations */
+.design-scroll-column--down .design-scroll-track {
+    animation: designScrollDown 22s linear infinite;
+}
+
+.design-scroll-column--up .design-scroll-track {
+    animation: designScrollUp 24s linear infinite;
+}
+
+@keyframes designScrollDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes designScrollUp {
+    0% {
+        transform: translateY(-50%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+    .design-hero {
+        padding-top: 110px;
+        padding-bottom: 50px;
+    }
+    .design-heading {
+        font-size: 2.1rem;
+    }
+    .design-scroll-wrapper {
+        height: 360px;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .design-scroll-wrapper {
+        height: 300px;
+    }
+}
