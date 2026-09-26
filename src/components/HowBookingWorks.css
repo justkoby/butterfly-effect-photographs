@@ -1,0 +1,125 @@
+/* ── HOW BOOKING WORKS (COMPACT 3-STEP SECTION) ─────────────── */
+.how-booking-works {
+  position: relative;
+  width: 100%;
+  margin: 2.5rem 0 1rem;
+}
+
+.hbw-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.hbw-kicker {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 0.5rem;
+}
+
+.hbw-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 300;
+  color: var(--light);
+}
+
+.hbw-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  position: relative;
+}
+
+.hbw-step-card {
+  background: rgba(35, 35, 35, 0.45);
+  border: 1px solid rgba(245, 243, 240, 0.08);
+  border-radius: 4px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.hbw-step-card:hover {
+  border-color: rgba(255, 107, 157, 0.3);
+  transform: translateY(-2px);
+}
+
+.hbw-step-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.hbw-step-num {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--pink);
+  line-height: 1;
+}
+
+.hbw-connector {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 107, 157, 0.35), transparent);
+}
+
+.hbw-step-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--light);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.hbw-step-desc {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(245, 243, 240, 0.7);
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.hbw-step-btn {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  border-bottom: 1px solid rgba(255, 107, 157, 0.4);
+  padding-bottom: 2px;
+  transition: all 0.2s ease;
+}
+
+.hbw-step-btn:hover {
+  color: #fff;
+  border-color: #fff;
+  transform: translateX(2px);
+}
+
+@media (max-width: 860px) {
+  .hbw-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hbw-connector {
+    display: none;
+  }
+
+  .hbw-step-card {
+    padding: 1.5rem;
+  }
+}

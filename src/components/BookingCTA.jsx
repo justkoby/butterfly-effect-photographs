@@ -1,10 +1,11 @@
+import HowBookingWorks from "./HowBookingWorks";
 import "./BookingCTA.css";
 
 const BOOK_URL = "https://butterflyn21t.setmore.com/butterfly";
 
 export default function BookingCTA() {
   return (
-    <section className="booking-cta" aria-label="Book a session">
+    <section className="booking-cta" id="booking" aria-label="Book a session">
       <div className="booking-bg" aria-hidden="true">
         <img src="/images/port-6.jpg" alt="" />
         <div className="booking-overlay" />
@@ -17,10 +18,19 @@ export default function BookingCTA() {
         <p className="booking-sub">
           Book your session online — portraits, weddings, commercial or studio rental.
         </p>
-        <a href={BOOK_URL} target="_blank" rel="noreferrer" className="btn btn-primary booking-btn">
-          Book a Session
-        </a>
+
+        {/* Compact Three-Step Process */}
+        <div className="booking-hbw-wrapper">
+          <HowBookingWorks mode="session" />
+        </div>
+
+        <div className="booking-action-wrap">
+          <a href={BOOK_URL} target="_blank" rel="noreferrer" className="btn btn-primary booking-btn">
+            Book a Session
+          </a>
+        </div>
       </div>
     </section>
   );
 }
+

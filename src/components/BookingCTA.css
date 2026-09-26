@@ -28,7 +28,10 @@
 .booking-content {
   position: relative;
   z-index: 2;
-  padding: 5rem 2rem;
+  padding: clamp(4rem, 7vw, 7rem) 2rem;
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .booking-title {
@@ -39,15 +42,27 @@
 .booking-title em { font-style: italic; color: var(--pink); }
 
 .booking-sub {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: rgba(245,243,240,0.7);
-  margin-bottom: 2.5rem;
-  max-width: 400px;
+  margin-bottom: 2rem;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
 }
 
+.booking-hbw-wrapper {
+  margin: 2.5rem auto 3rem;
+  max-width: 1080px;
+}
+
+.booking-action-wrap {
+  display: flex;
+  justify-content: center;
+}
+
 .booking-btn {
   font-size: 0.85rem;
-  padding: 1rem 2.8rem;
+  padding: 1.1rem 3.2rem;
+  letter-spacing: 0.16em;
 }
+

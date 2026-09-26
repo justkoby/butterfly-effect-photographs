@@ -1,15 +1,15 @@
+import { Link } from "react-router-dom";
 import "./StudioRentals.css";
 
 const BOOK_URL = "https://butterflyn21t.setmore.com/butterfly";
-const INQUIRY_EMAIL = "mailto:beffectphotographs@gmail.com?subject=Studio%20Rental%20Inquiry";
 
 const FEATURES = [
-  "Professional lighting rigs",
-  "Multiple backdrop options",
-  "Props and set pieces",
-  "Private changing area",
-  "Spacious car parking",
-  "Fast Wi-Fi on-site",
+  "Professional studio lighting & softboxes",
+  "Multiple colored backdrops & paper rolls",
+  "Dedicated makeup & styling vanity station",
+  "Air-conditioned private changing room",
+  "Camera & lens kit (available for additional fee)",
+  "Secure parking & high-speed Wi-Fi",
 ];
 
 export default function StudioRentals() {
@@ -18,15 +18,15 @@ export default function StudioRentals() {
       <div className="studio-inner">
         {/* Left — image */}
         <div className="studio-media">
-          <div className="studio-img-wrap">
+          <Link to="/studio-rental" className="studio-img-wrap" aria-label="View dedicated studio rental page">
             <img
               src="/images/studio.png"
               alt="Butterfly Effect Photographs studio space in Adenta, Accra"
               loading="lazy"
             />
-          </div>
+          </Link>
           <div className="studio-location-tag">
-            <span>📍</span> Ala Adjetey St, Adenta Municipality, Accra
+            <span>📍</span> Adenta Housing Down, Accra
           </div>
         </div>
 
@@ -38,9 +38,9 @@ export default function StudioRentals() {
             <em>Effect Studio</em>
           </h2>
           <p className="studio-desc">
-            Our modern, fully-equipped studio in Adenta is available for rent by
-            photographers, videographers and creatives. Whether you need it for a
-            half-day shoot or a full production day, the space is ready for your vision.
+            Our modern, light-controlled production studio in Adenta is ready for
+            photographers, videographers, and creative agencies. Includes backdrops,
+            lights, and makeup space — with camera bodies and lenses available for an additional fee.
           </p>
 
           <ul className="studio-features">
@@ -53,11 +53,11 @@ export default function StudioRentals() {
           </ul>
 
           <div className="studio-ctas">
-            <a href={BOOK_URL} target="_blank" rel="noreferrer" className="btn btn-primary">
-              Book the Studio
-            </a>
-            <a href={INQUIRY_EMAIL} className="btn btn-ghost">
-              Send an Inquiry
+            <Link to="/studio-rental" className="btn btn-primary">
+              Explore Studio &amp; Rates
+            </Link>
+            <a href={BOOK_URL} target="_blank" rel="noreferrer" className="btn btn-ghost">
+              Book on Calendar
             </a>
           </div>
         </div>
@@ -65,3 +65,4 @@ export default function StudioRentals() {
     </section>
   );
 }
+

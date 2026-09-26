@@ -53,7 +53,7 @@ export default function AboutPage() {
 
                 <div className="ap-location-pill">
                   <span className="ap-loc-dot" />
-                  <span>Studio Location: Adenta Municipality · Accra, Ghana</span>
+                  <span>Studio Location: Adenta Housing Down · Accra, Ghana</span>
                 </div>
               </div>
 

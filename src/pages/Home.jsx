@@ -5,6 +5,7 @@ import InfiniteGallery from "../components/InfiniteGallery";
 import About from "../components/About";
 import Services from "../components/Services";
 import VideoShowcase from "../components/VideoShowcase";
+import SessionPackages from "../components/SessionPackages";
 import StudioRentals from "../components/StudioRentals";
 import InstagramFeed from "../components/InstagramFeed";
 import BookingCTA from "../components/BookingCTA";
@@ -31,6 +32,7 @@ export default function Home() {
           <About />
           <Services />
           <VideoShowcase />
+          <SessionPackages />
           <StudioRentals />
           <InstagramFeed />
           <BookingCTA />

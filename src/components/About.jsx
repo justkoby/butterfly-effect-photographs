@@ -36,7 +36,7 @@ export default function About() {
             <em>Stable Plus Pharmacy</em>, <em>Efya Nocturnal</em> and{" "}
             <em>Kelvin Vincent</em>.
           </p>
-          <p className="about-signature">Creative Diligent Services</p>
+          <p className="about-signature">Creative Diligent Service</p>
 
           <div className="about-actions-row">
             <Link to="/about" className="about-full-btn">

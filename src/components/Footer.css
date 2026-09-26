@@ -17,7 +17,8 @@
 
 /* BRAND */
 .footer-logo { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; margin-bottom: 0.75rem; }
-.footer-tagline { font-size: 0.8rem; color: var(--mid); margin-bottom: 1.2rem; }
+.footer-tagline { font-size: 0.8rem; color: var(--mid); margin-bottom: 0.5rem; }
+.footer-slogan { font-family: var(--font-serif); font-style: italic; font-size: 0.85rem; color: var(--pink); margin-bottom: 1.2rem; }
 .footer-socials { display: flex; gap: 1rem; margin-bottom: 1rem; }
 .footer-socials a { color: rgba(245,243,240,0.5); transition: color 0.2s; }
 .footer-socials a:hover { color: var(--pink); }
@@ -63,18 +64,20 @@
 .footer-contact a { color: rgba(245,243,240,0.65); transition: color 0.2s; }
 .footer-contact a:hover { color: var(--pink); }
 
-.footer-directions { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.footer-directions { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
 .footer-dir-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); }
+.footer-dir-links { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 .footer-directions a {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(245,243,240,0.5);
+  color: rgba(245,243,240,0.6);
   padding: 0.3rem 0.75rem;
   border: 1px solid rgba(245,243,240,0.15);
+  border-radius: 999px;
   transition: all 0.2s;
 }
-.footer-directions a:hover { color: var(--light); border-color: rgba(245,243,240,0.4); }
+.footer-directions a:hover { color: var(--pink); border-color: var(--pink); background: rgba(255,107,157,0.1); }
 
 /* BOOK */
 .footer-book-btn { width: 100%; justify-content: center; margin-bottom: 0.75rem; }

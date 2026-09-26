@@ -5,6 +5,8 @@ import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import Makeup from "./pages/Makeup";
 import PortfolioWedding from "./pages/PortfolioWedding";
+import PortfolioCategory from "./pages/PortfolioCategory";
+import StudioRental from "./pages/StudioRental";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -24,10 +26,13 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/makeup" element={<Makeup />} />
         <Route path="/portfolio/wedding" element={<PortfolioWedding />} />
+        <Route path="/portfolio/:categorySlug" element={<PortfolioCategory />} />
+        <Route path="/makeup" element={<Makeup />} />
+        <Route path="/studio-rental" element={<StudioRental />} />
       </Routes>
     </Router>
   );
 }
+
 

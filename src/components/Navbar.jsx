@@ -69,6 +69,7 @@ export default function Navbar() {
         <ul>
           <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
           <li><Link to="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link></li>
+          <li><Link to="/studio-rental" onClick={() => setOpen(false)}>Studio Rental</Link></li>
           <li><Link to="/#services" onClick={() => setOpen(false)}>Services</Link></li>
           <li>
             <a

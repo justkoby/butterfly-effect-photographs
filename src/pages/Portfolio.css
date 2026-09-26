@@ -1,50 +1,87 @@
 /* ── PORTFOLIO PAGE ───────────────────────────────────────── */
+.pf-main {
+  width: 100%;
+  position: relative;
+}
+
 .pf-hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100svh;
+  grid-template-columns: 1.05fr 0.95fr;
+  height: 100vh;
+  height: 100svh;
+  max-height: 100vh;
+  max-height: 100svh;
   padding-top: var(--nav-h);
   background: var(--charcoal);
   overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .pf-hero-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem 3rem 4rem 4rem;
+  height: 100%;
+  padding: 2rem 3rem 2rem 4rem;
+  box-sizing: border-box;
+  z-index: 2;
 }
 
 .pf-hero-title {
-  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  line-height: 1.05;
   margin: 0.5rem 0 1.2rem;
   color: var(--light);
 }
 .pf-hero-title em { font-style: italic; color: var(--pink); }
 
 .pf-hero-intro {
-  font-size: 0.9rem;
-  color: rgba(245,243,240,0.65);
+  font-size: 0.95rem;
+  color: rgba(245, 243, 240, 0.7);
   line-height: 1.8;
   margin-bottom: 2rem;
-  max-width: 400px;
+  max-width: 440px;
 }
 
-/* SCROLLING COLUMNS */
+/* SCROLLING COLUMNS — CLIPPED TO CONTAINER HEIGHT */
 .pf-hero-cols {
+  position: relative;
+  height: 100%;
+  max-height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
   overflow: hidden;
-  padding: calc(var(--nav-h) + 1rem) 1rem 2rem;
+  padding: 1rem 1.5rem 1rem 0;
+  box-sizing: border-box;
+}
+
+/* Subtle top and bottom gradient fades to cleanly frame columns */
+.pf-hero-cols::before,
+.pf-hero-cols::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40px;
+  z-index: 5;
+  pointer-events: none;
+}
+.pf-hero-cols::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--charcoal), transparent);
+}
+.pf-hero-cols::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--charcoal), transparent);
 }
 
 .pf-col {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  will-change: transform;
 }
 .pf-col-up   { animation: scroll-up 28s linear infinite; }
 .pf-col-down { animation: scroll-down 32s linear infinite; }
@@ -52,7 +89,11 @@
 @keyframes scroll-up   { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 @keyframes scroll-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
 
-.pf-col-img { flex-shrink: 0; overflow: hidden; }
+.pf-col-img {
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 2px;
+}
 .pf-col-img img {
   width: 100%;
   aspect-ratio: 3/4;
@@ -121,11 +162,57 @@
 .pf-cat-info p  { font-size: 0.78rem; color: var(--mid); line-height: 1.6; margin-bottom: 0.75rem; }
 .pf-cat-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pink); }
 
+.pf-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pf-cat-subtitle {
+  font-size: 0.92rem;
+  color: rgba(245, 243, 240, 0.65);
+  max-width: 520px;
+  margin: 0.75rem auto 0;
+  line-height: 1.6;
+}
+
+/* HOW BOOKING WORKS IN PORTFOLIO */
+.pf-booking-guide-section {
+  padding: clamp(5rem, 8vw, 7.5rem) 2rem;
+  background: var(--charcoal);
+  border-top: 1px solid rgba(245, 243, 240, 0.08);
+}
+
+.pf-booking-guide-container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.pf-guide-cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 900px) {
-  .pf-hero { grid-template-columns: 1fr; }
+  .pf-hero {
+    grid-template-columns: 1fr;
+    height: auto;
+    max-height: none;
+    padding-top: calc(var(--nav-h) + 1rem);
+  }
   .pf-hero-cols { display: none; }
-  .pf-hero-text { padding: 5rem 1.5rem 3rem; min-height: 60svh; }
+  .pf-hero-text {
+    padding: 1.5rem 1.25rem 3rem;
+    min-height: auto;
+  }
   .pf-cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .pf-hero-actions { flex-direction: column; }
+  .pf-hero-actions .btn { width: 100%; justify-content: center; }
+  .pf-guide-cta-row { flex-direction: column; }
+  .pf-guide-cta-row .btn { width: 100%; justify-content: center; }
 }
 @media (max-width: 600px) {
   .pf-cat-grid { grid-template-columns: 1fr; }
@@ -133,3 +220,4 @@
 @media (prefers-reduced-motion: reduce) {
   .pf-col-up, .pf-col-down { animation: none; }
 }
+
