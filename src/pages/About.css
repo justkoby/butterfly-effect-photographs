@@ -1,0 +1,542 @@
+/* ============================================================
+   ABOUT US PAGE — EVERMORE EDITORIAL LAYOUT
+   Palette: Charcoal #1A1A1A · Dark Grey #2C2C2C · White #F5F3F0 · Pink #FF6B9D
+   ============================================================ */
+
+.about-page {
+  background: var(--charcoal);
+  color: var(--light);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.about-main {
+  padding-top: var(--nav-h);
+}
+
+.ap-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+/* ── COMMON SECTION ELEMENTS ───────────────────────────────── */
+.ap-section {
+  position: relative;
+  padding: clamp(5rem, 8vw, 8.5rem) 0;
+  border-bottom: 1px solid rgba(245, 243, 240, 0.07);
+}
+
+.ap-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(245, 243, 240, 0.08);
+}
+
+.ap-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 240, 0.85);
+}
+
+.ap-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pink);
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(255, 107, 157, 0.6);
+}
+
+.ap-index {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: rgba(245, 243, 240, 0.38);
+}
+
+.ap-headline {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--light);
+}
+
+/* ── SECTION 01: ABOUT THE STUDIO ──────────────────────────── */
+.ap-section-studio {
+  padding-top: clamp(4rem, 6vw, 6.5rem);
+}
+
+.ap-studio-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: flex-start;
+}
+
+.ap-studio-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: clamp(4rem, 8vw, 7.5rem);
+}
+
+.ap-body-lead {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(245, 243, 240, 0.78);
+  margin-bottom: 2.5rem;
+}
+
+.ap-location-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 240, 0.5);
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(245, 243, 240, 0.08);
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.ap-loc-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.ap-studio-right .ap-headline {
+  margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  max-width: 820px;
+}
+
+.ap-wide-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.ap-wide-img {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ap-image-caption {
+  margin-top: 0.85rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 240, 0.4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── SECTION 02: OUR APPROACH ──────────────────────────────── */
+.ap-headline-approach {
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  max-width: 1080px;
+}
+
+.ap-approach-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 460px) 1fr;
+  gap: clamp(3rem, 6vw, 6.5rem);
+  align-items: flex-start;
+}
+
+.ap-approach-media {
+  width: 100%;
+}
+
+.ap-portrait-img {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ap-approach-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.ap-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ap-body-text {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(245, 243, 240, 0.74);
+}
+
+/* Restrained disciplines list */
+.ap-disciplines-block {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245, 243, 240, 0.1);
+}
+
+.ap-disciplines-heading {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 1.75rem;
+}
+
+.ap-disciplines-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem 2.5rem;
+}
+
+.ap-discipline-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(245, 243, 240, 0.06);
+}
+
+.ap-disc-id {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: rgba(245, 243, 240, 0.35);
+  margin-top: 2px;
+}
+
+.ap-disc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ap-disc-name {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--light);
+}
+
+.ap-disc-desc {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(245, 243, 240, 0.52);
+}
+
+/* ── SECTION 03: HEAD PHOTOGRAPHER ─────────────────────────── */
+.ap-headline-team {
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+/* Profile Card — Expanded presence */
+.ap-profile-card {
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) 1fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  background: rgba(32, 32, 32, 0.65);
+  border: 1px solid rgba(245, 243, 240, 0.09);
+  padding: clamp(2rem, 3.5vw, 3.5rem);
+  border-radius: 4px;
+  align-items: center;
+  position: relative;
+}
+
+.ap-lead-portrait {
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.ap-profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 580px;
+}
+
+.ap-role-kicker {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 0.5rem;
+}
+
+.ap-photographer-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.85rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--light);
+  line-height: 1.15;
+}
+
+.ap-photographer-bio {
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(245, 243, 240, 0.75);
+}
+
+.ap-profile-socials {
+  margin-top: 0.5rem;
+}
+
+.ap-ig-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(245, 243, 240, 0.14);
+  color: var(--light);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+.ap-ig-pill svg {
+  color: var(--pink);
+  transition: transform 0.25s ease;
+}
+
+.ap-ig-arrow {
+  color: rgba(245, 243, 240, 0.45);
+  font-size: 0.95rem;
+  transition: transform 0.25s ease;
+}
+
+.ap-ig-pill:hover {
+  background: rgba(255, 107, 157, 0.12);
+  border-color: var(--pink);
+  color: var(--light);
+  transform: translateY(-2px);
+}
+
+.ap-ig-pill:hover svg {
+  transform: scale(1.1);
+}
+
+.ap-ig-pill:hover .ap-ig-arrow {
+  transform: translate(2px, -2px);
+  color: var(--pink);
+}
+
+/* ── WORKING PHOTOGRAPHS SLOTS ─────────────────────────────── */
+.ap-working-shots {
+  margin-top: clamp(4rem, 6vw, 6rem);
+  padding-top: clamp(3rem, 5vw, 4.5rem);
+  border-top: 1px solid rgba(245, 243, 240, 0.08);
+}
+
+.ap-working-meta {
+  margin-bottom: 2rem;
+}
+
+.ap-working-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 240, 0.55);
+}
+
+.ap-working-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.ap-working-slot {
+  position: relative;
+}
+
+.ap-working-img {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+}
+
+.ap-working-caption {
+  margin-top: 0.85rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 240, 0.45);
+}
+
+/* ── EDITORIAL BOOKING BANNER ──────────────────────────────── */
+.ap-booking-banner {
+  margin-top: clamp(5rem, 8vw, 7.5rem);
+  padding: clamp(3rem, 5vw, 4.5rem);
+  background: linear-gradient(
+    135deg,
+    rgba(35, 35, 35, 0.9) 0%,
+    rgba(26, 26, 26, 0.95) 100%
+  );
+  border: 1px solid rgba(255, 107, 157, 0.2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.ap-booking-banner-text {
+  max-width: 650px;
+}
+
+.ap-booking-kicker {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 0.75rem;
+}
+
+.ap-booking-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 300;
+  color: var(--light);
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+
+.ap-booking-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(245, 243, 240, 0.68);
+}
+
+.ap-booking-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ap-book-cta {
+  padding: 0.85rem 2rem;
+  font-size: 0.75rem;
+}
+
+.ap-portfolio-cta {
+  padding: 0.85rem 2rem;
+  font-size: 0.75rem;
+  border-color: rgba(245, 243, 240, 0.25);
+  color: var(--light);
+}
+
+.ap-portfolio-cta:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+/* ── RESPONSIVE DESIGN ─────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .ap-studio-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .ap-studio-left {
+    padding-top: 0;
+    order: 2;
+  }
+
+  .ap-studio-right {
+    order: 1;
+  }
+
+  .ap-approach-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .ap-profile-card {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .ap-lead-portrait {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ap-container {
+    padding: 0 1.25rem;
+  }
+
+  .ap-section {
+    padding: 4rem 0;
+  }
+
+  .ap-headline {
+    font-size: clamp(2rem, 7.5vw, 2.75rem);
+    line-height: 1.1;
+  }
+
+  .ap-disciplines-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .ap-working-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .ap-booking-banner {
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ap-booking-actions {
+    width: 100%;
+  }
+
+  .ap-booking-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

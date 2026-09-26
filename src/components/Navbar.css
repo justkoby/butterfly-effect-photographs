@@ -29,7 +29,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .nav-link {
@@ -52,8 +52,22 @@
 .nav-link:hover { color: var(--light); }
 .nav-link:hover::after { right: 0; }
 
-.nav-logo-wrap { display: flex; align-items: center; }
-.nav-logo { height: 40px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; transition: opacity 0.2s ease; }
+.nav-logo-wrap {
+  display: flex;
+  align-items: center;
+  /* Absolutely centre the logo between the two link groups on desktop */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.nav-logo {
+  height: 62px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
 .nav-logo-wrap:hover .nav-logo { opacity: 1; }
 
 .nav-book-btn {
@@ -143,6 +157,7 @@
 }
 
 @media (max-width: 900px) {
+  :root { --nav-h: 72px; }
   .navbar {
     height: auto;
     padding-top: max(env(safe-area-inset-top, 0px), 14px);
@@ -158,6 +173,11 @@
   .nav-inner {
     height: 44px;
     padding: 0 1.25rem;
+  }
+  /* Reset absolute centering on mobile — logo sits in normal flow next to hamburger */
+  .nav-logo-wrap {
+    position: static;
+    transform: none;
   }
   .nav-logo {
     height: 30px;

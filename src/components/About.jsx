@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./About.css";
 
 export default function About() {
@@ -37,7 +38,10 @@ export default function About() {
           </p>
           <p className="about-signature">Creative Diligent Services</p>
 
-          <div className="about-links">
+          <div className="about-actions-row">
+            <Link to="/about" className="about-full-btn">
+              Explore Our Full Story <span>→</span>
+            </Link>
             <a href="https://butterflyeffectconcepts.com" target="_blank" rel="noreferrer" className="sister-link">
               Also see Butterfly Effect Concepts →
             </a>

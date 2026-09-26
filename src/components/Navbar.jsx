@@ -22,7 +22,7 @@ export default function Navbar() {
       <div className="nav-inner">
         {/* LEFT LINKS */}
         <ul className="nav-links nav-left">
-          <li><Link className="nav-link" to="/#about">About</Link></li>
+          <li><Link className="nav-link" to="/about">About</Link></li>
           <li><Link className="nav-link" to="/portfolio">Portfolio</Link></li>
           <li><Link className="nav-link" to="/#services">Services</Link></li>
         </ul>
@@ -67,7 +67,7 @@ export default function Navbar() {
       {/* MOBILE MENU */}
       <div className={`mobile-menu${open ? " mobile-menu-open" : ""}`} aria-hidden={!open}>
         <ul>
-          <li><Link to="/#about" onClick={() => setOpen(false)}>About</Link></li>
+          <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
           <li><Link to="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link></li>
           <li><Link to="/#services" onClick={() => setOpen(false)}>Services</Link></li>
           <li>

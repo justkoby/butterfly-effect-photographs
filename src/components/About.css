@@ -70,6 +70,44 @@
   margin: 1.5rem 0 1.75rem;
 }
 
+.about-actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+}
+
+.about-full-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.6rem;
+  background: transparent;
+  border: 1px solid var(--pink);
+  color: var(--light);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.about-full-btn span {
+  transition: transform 0.25s ease;
+}
+
+.about-full-btn:hover {
+  background: var(--pink);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.about-full-btn:hover span {
+  transform: translateX(4px);
+}
+
 .sister-link {
   font-size: 0.78rem;
   letter-spacing: 0.06em;
