@@ -1,223 +1,32 @@
-/* ── PORTFOLIO PAGE ───────────────────────────────────────── */
-.pf-main {
-  width: 100%;
-  position: relative;
-}
-
-.pf-hero {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  height: 100vh;
-  height: 100svh;
-  max-height: 100vh;
-  max-height: 100svh;
-  padding-top: var(--nav-h);
-  background: var(--charcoal);
-  overflow: hidden;
-  box-sizing: border-box;
-  position: relative;
-}
-
-.pf-hero-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  padding: 2rem 3rem 2rem 4rem;
-  box-sizing: border-box;
-  z-index: 2;
-}
-
-.pf-hero-title {
-  font-size: clamp(2.8rem, 5vw, 4.8rem);
-  line-height: 1.05;
-  margin: 0.5rem 0 1.2rem;
-  color: var(--light);
-}
-.pf-hero-title em { font-style: italic; color: var(--pink); }
-
-.pf-hero-intro {
-  font-size: 0.95rem;
-  color: rgba(245, 243, 240, 0.7);
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  max-width: 440px;
-}
-
-/* SCROLLING COLUMNS — CLIPPED TO CONTAINER HEIGHT */
-.pf-hero-cols {
-  position: relative;
-  height: 100%;
-  max-height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  overflow: hidden;
-  padding: 1rem 1.5rem 1rem 0;
-  box-sizing: border-box;
-}
-
-/* Subtle top and bottom gradient fades to cleanly frame columns */
-.pf-hero-cols::before,
-.pf-hero-cols::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 40px;
-  z-index: 5;
-  pointer-events: none;
-}
-.pf-hero-cols::before {
-  top: 0;
-  background: linear-gradient(to bottom, var(--charcoal), transparent);
-}
-.pf-hero-cols::after {
-  bottom: 0;
-  background: linear-gradient(to top, var(--charcoal), transparent);
-}
-
-.pf-col {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  will-change: transform;
-}
-.pf-col-up   { animation: scroll-up 28s linear infinite; }
-.pf-col-down { animation: scroll-down 32s linear infinite; }
-
-@keyframes scroll-up   { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-@keyframes scroll-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
-
-.pf-col-img {
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 2px;
-}
-.pf-col-img img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.pf-col-img:hover img { transform: scale(1.04); }
-
-/* CATEGORIES */
-.pf-categories {
-  padding: 6rem 2rem;
-  background: var(--dark-grey);
-}
-
-.pf-cat-header { text-align: center; margin-bottom: 3rem; }
-.pf-cat-title {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  margin-top: 0.5rem;
-  color: var(--light);
-}
-.pf-cat-title em { font-style: italic; color: var(--pink); }
-
-.pf-cat-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5px;
-  background: rgba(255,107,157,0.08);
-  border: 1px solid rgba(255,107,157,0.08);
-}
-
-.pf-cat-card {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  background: var(--dark-grey);
-  cursor: pointer;
-  outline-offset: 2px;
-}
-
-.pf-cat-img {
-  position: relative;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-}
-.pf-cat-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: brightness(0.75) grayscale(15%);
-}
-.pf-cat-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(26,26,26,0.8) 0%, transparent 60%);
-}
-
-.pf-cat-card:hover .pf-cat-img img { transform: scale(1.06); }
-
-.pf-cat-info {
-  padding: 1.2rem 1.5rem 1.5rem;
-  background: var(--charcoal);
-}
-.pf-cat-info h3 { font-size: 1rem; font-weight: 400; margin-bottom: 0.4rem; color: var(--light); }
-.pf-cat-info p  { font-size: 0.78rem; color: var(--mid); line-height: 1.6; margin-bottom: 0.75rem; }
-.pf-cat-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pink); }
-
-.pf-hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.pf-cat-subtitle {
-  font-size: 0.92rem;
-  color: rgba(245, 243, 240, 0.65);
-  max-width: 520px;
-  margin: 0.75rem auto 0;
-  line-height: 1.6;
-}
-
-/* HOW BOOKING WORKS IN PORTFOLIO */
-.pf-booking-guide-section {
-  padding: clamp(5rem, 8vw, 7.5rem) 2rem;
-  background: var(--charcoal);
-  border-top: 1px solid rgba(245, 243, 240, 0.08);
-}
-
-.pf-booking-guide-container {
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-.pf-guide-cta-row {
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  margin-top: 2.5rem;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 900px) {
-  .pf-hero {
-    grid-template-columns: 1fr;
-    height: auto;
-    max-height: none;
-    padding-top: calc(var(--nav-h) + 1rem);
-  }
-  .pf-hero-cols { display: none; }
-  .pf-hero-text {
-    padding: 1.5rem 1.25rem 3rem;
-    min-height: auto;
-  }
-  .pf-cat-grid { grid-template-columns: repeat(2, 1fr); }
-  .pf-hero-actions { flex-direction: column; }
-  .pf-hero-actions .btn { width: 100%; justify-content: center; }
-  .pf-guide-cta-row { flex-direction: column; }
-  .pf-guide-cta-row .btn { width: 100%; justify-content: center; }
-}
-@media (max-width: 600px) {
-  .pf-cat-grid { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .pf-col-up, .pf-col-down { animation: none; }
-}
-
+/* Portfolio overview: a compact introduction followed directly by the work. */
+.pf-main { padding-top: var(--nav-h); background: var(--charcoal); }
+.pf-intro, .pf-collections, .pf-collection-nav, .pf-next-step { max-width: 1320px; margin: 0 auto; }
+.pf-intro { padding: clamp(2.5rem,5vw,5rem) 2rem 2.5rem; display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 3rem; }
+.pf-intro .kicker { font-size: .65rem; letter-spacing: .14em; }
+.pf-intro h1 { font-size: clamp(2.7rem,5vw,4.8rem); line-height: 1.08; margin-top: 1rem; max-width: 680px; }
+.pf-intro h1 em, .pf-next-step h2 em { color: var(--pink); }
+.pf-intro > p { color: #c2bcb8; font-size: .95rem; max-width: 370px; padding-bottom: .3rem; }
+.pf-collection-nav { display: flex; gap: .65rem; flex-wrap: wrap; padding: 0 2rem 2.5rem; }
+.pf-collection-nav a { border: 1px solid #75636b; border-radius: 999px; padding: .55rem 1rem; font-size: .75rem; transition: border-color .2s, background .2s; }
+.pf-collection-nav a:hover { border-color: var(--pink); background: #37242d; }
+.pf-collections { padding: 0 2rem 4.5rem; }
+.pf-cat-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 3rem 1.5rem; }
+.pf-cat-card { min-width: 0; display: block; scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
+.pf-cat-img { aspect-ratio: 4/5; overflow: hidden; background: #302b2e; }
+.pf-cat-img img { height: 100%; width: 100%; object-fit: cover; transition: transform .6s var(--ease-out); }
+.pf-cat-card:hover img { transform: scale(1.035); }
+.pf-cat-info { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin: 1rem 0 .35rem; }
+.pf-cat-info > div { display: flex; align-items: baseline; gap: .65rem; }
+.pf-cat-number { color: var(--pink); font-size: .63rem; }
+.pf-cat-info h2 { font-size: clamp(1.2rem,1.8vw,1.7rem); }
+.pf-cat-arrow { color: var(--pink); font-size: 1.25rem; }
+.pf-cat-tagline { color: #bcb5b0; font-size: .8rem; padding-left: 1.5rem; }
+.pf-main :is(a,button):focus-visible { outline: 2px solid var(--pink); outline-offset: 5px; }
+.pf-next-step { border-top: 1px solid #4b3c43; padding: 3.5rem 2rem 5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.pf-next-step h2 { font-size: clamp(2rem,4vw,3.4rem); margin: .6rem 0 1rem; }
+.pf-next-step p:not(.kicker) { color: #c2bcb8; font-size: .9rem; }
+.pf-next-actions { display: grid; gap: 1rem; text-align: center; flex-shrink: 0; }
+.pf-next-actions .btn { justify-content: center; }
+.pf-pricing-link { color: #ffc1d6; font-size: .8rem; }
+@media(max-width: 900px) { .pf-cat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .pf-intro { grid-template-columns: 1fr; gap: 1.25rem; } .pf-intro > p { max-width: 540px; } }
+@media(max-width: 600px) { .pf-intro,.pf-collection-nav,.pf-collections,.pf-next-step { padding-left: 1.25rem; padding-right: 1.25rem; } .pf-cat-grid { grid-template-columns: 1fr; gap: 2.2rem; } .pf-intro h1 { font-size: 2.7rem; } .pf-collection-nav { gap: .5rem; } .pf-collection-nav a { font-size: .7rem; padding: .45rem .75rem; } .pf-next-step { flex-direction: column; align-items: start; padding-bottom: 6rem; } .pf-next-actions { width: 100%; } .pf-cat-info h2 { font-size: 1.7rem; } }

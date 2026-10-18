@@ -1,140 +1,293 @@
+// Collections reviewed against the actual photographs, rather than their filenames.
 export const BOOK_URL = "https://butterflyn21t.setmore.com/butterfly";
 
 export const PORTFOLIO_CATEGORIES = [
   {
-    slug: "wedding",
-    title: "Weddings",
-    navTitle: "Weddings",
-    tagline: "Soft romance, real moments, and editorial candids.",
-    desc: "We document wedding celebrations with an authentic, unobtrusive eye. From the quiet morning preparations to the celebratory dances, we capture the emotions, details, and connection that make your day unforgettable.",
-    cover: "/images/wedidngs.jpg",
-    bookingLabel: "Book Your Wedding",
-    images: [
-      { src: "/images/wedidngs.jpg", alt: "Traditional wedding ceremony ceremony moments", span: "wide" },
-      { src: "/images/weddingsss.jpg", alt: "Intimate wedding couple portrait", span: "tall" },
-      { src: "/images/wedding-image.jpg", alt: "Candid bridal laugh and celebration", span: "square" },
-      { src: "/images/header-01-01.jpg", alt: "Editorial wedding day styling details", span: "tall" },
-      { src: "/images/header.jpg", alt: "Sunset romance and venue atmosphere", span: "wide" },
-    ],
+    "slug": "studio-portraits",
+    "title": "Portraits",
+    "navTitle": "Portraits",
+    "tagline": "Personality, in focus.",
+    "desc": "Individual portraits, from clean studio lighting to relaxed portraits on location.",
+    "cover": "/images/portrait-img.jpg",
+    "bookingLabel": "Plan a Portrait Session",
+    "images": [
+      {
+        "src": "/images/portrait-img.jpg",
+        "alt": "Studio portrait against a warm red backdrop",
+        "width": 2184,
+        "height": 2912
+      },
+      {
+        "src": "/images/port-4.jpg",
+        "alt": "Creative portrait with a hand extended toward the camera",
+        "width": 1440,
+        "height": 1920
+      },
+      {
+        "src": "/images/sadasdasd.jpg",
+        "alt": "Seated portrait in a white outfit",
+        "width": 1350,
+        "height": 1080
+      },
+      {
+        "src": "/images/personal-imag.jpg",
+        "alt": "Relaxed portrait in a patterned shirt",
+        "width": 1638,
+        "height": 2184
+      },
+      {
+        "src": "/images/port-1.jpg",
+        "alt": "Outdoor portrait seated beside a garden",
+        "width": 1440,
+        "height": 1920
+      },
+      {
+        "src": "/images/portrait-img-3.jpg",
+        "alt": "Studio portrait in a black shirt and sunglasses",
+        "width": 1638,
+        "height": 2047
+      },
+      {
+        "src": "/images/port-9.jpg",
+        "alt": "Playful portrait in a green shirt and yellow skirt",
+        "width": 1350,
+        "height": 1687
+      }
+    ]
   },
   {
-    slug: "studio-portraits",
-    title: "Studio Portraits",
-    navTitle: "Portraits",
-    tagline: "Fine art, fashion, and concept-driven studio sessions.",
-    desc: "Crafted in our Adenta studio using tailored lighting setups and clean backdrops. We work collaboratively to bring out your personality, strength, and elegance in every frame.",
-    cover: "/images/port-1.jpg",
-    bookingLabel: "Book a Studio Portrait Session",
-    images: [
-      { src: "/images/port-1.jpg", alt: "Fine art studio portrait with tailored hat and white styling", span: "tall" },
-      { src: "/images/portrait-img.jpg", alt: "High-contrast dark studio portrait with subtle rim lighting", span: "tall" },
-      { src: "/images/port-6.jpg", alt: "Contemporary studio beauty and fashion portrait", span: "wide" },
-      { src: "/images/portrait-img-3.jpg", alt: "Minimalist studio portrait study", span: "square" },
-      { src: "/images/fine-art-01.webp", alt: "Fine art portrait with dramatic editorial shadow", span: "tall" },
-      { src: "/images/771617614_17934865395360283_1604756010795142018_n.jpg", alt: "Expressive studio session in Adenta", span: "wide" },
-      { src: "/images/743632895_17929253856360283_1958697232577540578_n.jpg", alt: "Creative lighting portrait study", span: "square" },
-    ],
+    "slug": "birthdays",
+    "title": "Birthdays",
+    "navTitle": "Birthdays",
+    "tagline": "Your next chapter, celebrated.",
+    "desc": "A selection of celebration portraits, styled birthday sessions and moments of joy.",
+    "cover": "/images/birthday-shoot.jpg",
+    "bookingLabel": "Plan a Birthday Shoot",
+    "images": [
+      {
+        "src": "/images/birthday-shoot.jpg",
+        "alt": "Birthday portrait with black balloons",
+        "width": 640,
+        "height": 800
+      },
+      {
+        "src": "/images/birthday-shoot-4.jpg",
+        "alt": "Seated celebration portrait in a black lace dress",
+        "width": 1638,
+        "height": 2047
+      },
+      {
+        "src": "/images/birthday-shoot-5.jpg",
+        "alt": "Birthday studio portrait against a white backdrop",
+        "width": 1638,
+        "height": 2047
+      },
+      {
+        "src": "/images/bg-01.webp",
+        "alt": "Celebration portrait with a birthday cake topper",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/images/birthday-shoot-2.jpg",
+        "alt": "Birthday portrait seated in a black lace outfit",
+        "width": 640,
+        "height": 799
+      }
+    ]
   },
   {
-    slug: "beauty-hair",
-    title: "Beauty & Hair",
-    navTitle: "Beauty & Hair",
-    tagline: "Close-up glam, textured hair stories, and skin detail.",
-    desc: "A celebration of melanin-rich skin, exquisite makeup artistry, and luxury wig styling. In collaboration with Colours & Brushes Artistry, we create striking macro beauty imagery.",
-    cover: "/images/port-10.jpg",
-    bookingLabel: "Book a Beauty Shoot",
-    images: [
-      { src: "/images/port-10.jpg", alt: "Close-up beauty glam with radiant skin finish", span: "tall" },
-      { src: "/images/port-11.jpeg", alt: "Textured editorial hair and styling portrait", span: "tall" },
-      { src: "/images/port-12.jpg", alt: "Detail-focused skin glow and beauty makeup", span: "square" },
-      { src: "/images/port-7.jpg", alt: "High-fashion beauty portrait with bold palette", span: "wide" },
-      { src: "/images/port-8.jpg", alt: "Soft bridal glam and refined cosmetic finish", span: "tall" },
-      { src: "/images/port-9.jpg", alt: "Editorial hair story with elegant styling", span: "square" },
-      { src: "/images/486801512_17865434376360283_1379947959742335266_n.webp", alt: "Creative makeup and beauty lighting", span: "wide" },
-    ],
+    "slug": "couples-family",
+    "title": "Couples & Families",
+    "navTitle": "Couples & Families",
+    "tagline": "The people who make it yours.",
+    "desc": "Portraits of couples and families, with space for connection, personality and shared memories.",
+    "cover": "/images/wedding-image.jpg",
+    "bookingLabel": "Plan a Couple or Family Session",
+    "images": [
+      {
+        "src": "/images/tours-image.webp",
+        "alt": "Family group portrait in coordinated white shirts",
+        "width": 1010,
+        "height": 612
+      },
+      {
+        "src": "/images/494956115_17869905486360283_7000519006730614175_n.webp",
+        "alt": "Couple portrait outdoors in a garden",
+        "width": 1440,
+        "height": 1800
+      },
+      {
+        "src": "/images/experience-image.webp",
+        "alt": "Seated couple portrait in traditional attire",
+        "width": 1010,
+        "height": 612
+      },
+      {
+        "src": "/images/wedding-image.jpg",
+        "alt": "Couple portrait in colourful occasion wear",
+        "width": 1080,
+        "height": 1440
+      }
+    ]
   },
   {
-    slug: "maternity",
-    title: "Maternity",
-    navTitle: "Maternity",
-    tagline: "Soft, intimate portraits celebrating motherhood and new beginnings.",
-    desc: "A gentle, private experience in our Adenta studio or on location. We capture the beauty, serenity, and quiet joy of your maternity journey with timeless elegance.",
-    cover: "/images/portrait-img-2.jpg",
-    bookingLabel: "Book a Maternity Session",
-    images: [
-      { src: "/images/portrait-img-2.jpg", alt: "Soft ethereal studio maternity portrait", span: "tall" },
-      { src: "/images/472475050_17856900417360283_945666426487491375_n.webp", alt: "Intimate expectant mother portrait study", span: "square" },
-      { src: "/images/472601851_17857273575360283_1298394905927224094_n.webp", alt: "Graceful silhouette and soft drapery styling", span: "tall" },
-      { src: "/images/472605250_17857271781360283_6497494410406123929_n.webp", alt: "Timeless motherhood celebration in gentle light", span: "wide" },
-    ],
+    "slug": "wedding",
+    "title": "Weddings",
+    "navTitle": "Weddings",
+    "tagline": "Love, in the details.",
+    "desc": "Bridal portraits and traditional wedding imagery, celebrating personal style and meaningful moments.",
+    "cover": "/images/wedidngs.jpg",
+    "bookingLabel": "Enquire About Your Wedding",
+    "images": [
+      {
+        "src": "/images/wedidngs.jpg",
+        "alt": "Traditional bridal portrait in an orange embellished dress",
+        "width": 1440,
+        "height": 1800
+      },
+      {
+        "src": "/images/weddingsss.jpg",
+        "alt": "Smiling bride in traditional orange attire",
+        "width": 1440,
+        "height": 1800
+      },
+      {
+        "src": "/images/port-7.jpg",
+        "alt": "Bride in a white lace wedding gown holding a bouquet",
+        "width": 1440,
+        "height": 1919
+      },
+      {
+        "src": "/images/port-2.jpg.jpg",
+        "alt": "Close-up bridal portrait with a white bouquet",
+        "width": 1440,
+        "height": 1920
+      },
+      {
+        "src": "/images/port-8.jpg",
+        "alt": "Bridal beauty portrait with gold jewellery",
+        "width": 1440,
+        "height": 1920
+      }
+    ]
   },
   {
-    slug: "birthdays",
-    title: "Birthdays",
-    navTitle: "Birthdays",
-    tagline: "Playful, celebratory, and styled milestone portraits.",
-    desc: "Celebrate your chapter with confidence. Whether you want a high-fashion editorial set, balloon and confetti glamour, or a relaxed intimate session, we make your birthday shoot memorable.",
-    cover: "/images/birthday-shoot.jpg",
-    bookingLabel: "Book a Birthday Shoot",
-    images: [
-      { src: "/images/birthday-shoot.jpg", alt: "Chic birthday portrait with celebratory styling", span: "tall" },
-      { src: "/images/birthday-shoot-2.jpg", alt: "Styled glamour birthday portrait in studio", span: "square" },
-      { src: "/images/birthday-shoot-3.jpg", alt: "Vibrant birthday set with custom backdrop", span: "tall" },
-      { src: "/images/birthday-shoot-4.jpg", alt: "Fun celebratory laughter and styled props", span: "wide" },
-      { src: "/images/birthday-shoot-5.jpg", alt: "Milestone birthday portrait in fine light", span: "square" },
-      { src: "/images/477043660_18023003237646224_544595653562619550_n.jpg", alt: "Special occasion milestone portrait", span: "tall" },
-    ],
+    "slug": "beauty-hair",
+    "title": "Beauty & Fashion",
+    "navTitle": "Beauty & Fashion",
+    "tagline": "Expression, colour and detail.",
+    "desc": "Beauty close-ups, makeup detail and fashion portraits with considered lighting and styling.",
+    "cover": "/images/486801512_17865434376360283_1379947959742335266_n.webp",
+    "bookingLabel": "Plan a Beauty or Fashion Shoot",
+    "images": [
+      {
+        "src": "/images/486801512_17865434376360283_1379947959742335266_n.webp",
+        "alt": "Beauty portrait with purple eye makeup and pink nails",
+        "width": 1440,
+        "height": 1800
+      },
+      {
+        "src": "/images/742020230_17929248111360283_2759262200560915592_n.jpg",
+        "alt": "Close-up beauty portrait with gold statement earrings",
+        "width": 1638,
+        "height": 2183
+      },
+      {
+        "src": "/images/743632895_17929253856360283_1958697232577540578_n.jpg",
+        "alt": "Beauty portrait against a warm neutral background",
+        "width": 1638,
+        "height": 2183
+      },
+      {
+        "src": "/images/portrait-img-2.jpg",
+        "alt": "Beauty portrait with a red backdrop and black styling",
+        "width": 1638,
+        "height": 2183
+      },
+      {
+        "src": "/images/fine-art-01.webp",
+        "alt": "Fine art portrait framed by dark fabric",
+        "width": 630,
+        "height": 870
+      },
+      {
+        "src": "/images/724086958_17924921121360283_5265862649137552814_n.jpg",
+        "alt": "Fashion portrait in a black outfit with editorial cover styling",
+        "width": 1122,
+        "height": 1402
+      },
+      {
+        "src": "/images/mmmm,.jpg",
+        "alt": "Studio portrait in a purple dress",
+        "width": 1350,
+        "height": 1080
+      }
+    ]
   },
   {
-    slug: "product-commercial",
-    title: "Product & Commercial",
-    navTitle: "Commercial",
-    tagline: "Clean, styled visual campaigns for brands and lookbooks.",
-    desc: "Visuals that elevate your brand and build trust. We produce sharp product photography, corporate headshots, lookbooks, and marketing assets tailored to your brand voice.",
-    cover: "/images/port-4.jpg",
-    bookingLabel: "Book a Commercial Shoot",
-    images: [
-      { src: "/images/port-4.jpg", alt: "Studio product styling with luxury cosmetic item", span: "tall" },
-      { src: "/images/corporate-01.webp", alt: "Executive and corporate leadership portrait", span: "square" },
-      { src: "/images/structure-01.webp", alt: "Architectural and brand space photography", span: "wide" },
-      { src: "/images/486110901_17864991306360283_1079763903404017261_n.webp", alt: "Fashion brand lookbook photography", span: "tall" },
-      { src: "/images/486744711_17865608541360283_8344650153312767907_n.webp", alt: "Commercial product detail lighting", span: "square" },
-    ],
-  },
-  {
-    slug: "events",
-    title: "Events",
-    navTitle: "Events",
-    tagline: "Candid, vibrant coverage of special occasions and galas.",
-    desc: "From corporate dinners and milestone anniversaries to graduations and cultural galas, we deliver comprehensive, vibrant event coverage that captures the atmosphere and VIP moments.",
-    cover: "/images/port-5.jpg",
-    bookingLabel: "Inquire for Event Coverage",
-    images: [
-      { src: "/images/port-5.jpg", alt: "Evening banquet and celebratory event coverage", span: "tall" },
-      { src: "/images/grad-image.jpg", alt: "Commencement graduation ceremony celebration", span: "tall" },
-      { src: "/images/469597607_1764965890989815_948276033177067036_n.jpg", alt: "Red carpet gala candids and guests", span: "wide" },
-      { src: "/images/469641755_1329399818418481_1893241133985500969_n.jpg", alt: "Keynote presentation and audience engagement", span: "square" },
-      { src: "/images/470049775_553217270947223_7192737673437342263_n.jpg", alt: "Awards night ceremony and honorees", span: "tall" },
-      { src: "/images/470092802_1649105789362228_6584321361466700250_n.jpg", alt: "Festive celebration candid moments", span: "wide" },
-    ],
-  },
-  {
-    slug: "outdoor-lifestyle",
-    title: "Outdoor & Lifestyle",
-    navTitle: "Lifestyle",
-    tagline: "On-location storytelling, fitness, and natural light moments across Ghana.",
-    desc: "Taking the camera into the real world. We shoot on location across Accra and throughout Ghana — celebrating fitness, everyday personality, coastal light, and spontaneous storytelling.",
-    cover: "/images/tours-image.webp",
-    bookingLabel: "Book an Outdoor Session",
-    images: [
-      { src: "/images/tours-image.webp", alt: "Sunset canopy walk on location in Ghana", span: "wide" },
-      { src: "/images/personal-imag.jpg", alt: "Casual relaxed outdoor portraiture", span: "tall" },
-      { src: "/images/fitness-image.jpg", alt: "Outdoor athletic fitness lifestyle portrait", span: "square" },
-      { src: "/images/fitness-image-2.jpg", alt: "Strength and conditioning workout in open air", span: "tall" },
-      { src: "/images/fitness-image-3.jpg", alt: "Active lifestyle movement study", span: "square" },
-      { src: "/images/742020230_17929248111360283_2759262200560915592_n.jpg", alt: "Street style and urban portraiture", span: "tall" },
-      { src: "/images/722313960_17924922678360283_8622821030973350455_n.jpg", alt: "Natural architectural background portrait", span: "wide" },
-      { src: "/images/724086958_17924921121360283_5265862649137552814_n.jpg", alt: "Warm sunlight outdoor candid", span: "square" },
-    ],
-  },
+    "slug": "headshots-branding",
+    "title": "Headshots & Branding",
+    "navTitle": "Headshots & Branding",
+    "tagline": "Show up as yourself.",
+    "desc": "Professional portraits and personal brand imagery for individuals, creatives and businesses.",
+    "cover": "/images/771617614_17934865395360283_1604756010795142018_n.jpg",
+    "bookingLabel": "Enquire About a Branding Shoot",
+    "images": [
+      {
+        "src": "/images/771617614_17934865395360283_1604756010795142018_n.jpg",
+        "alt": "Professional headshot in a grey suit",
+        "width": 1638,
+        "height": 2183
+      },
+      {
+        "src": "/images/corporate-01.webp",
+        "alt": "Personal brand portrait at a desk in a green outfit",
+        "width": 630,
+        "height": 870
+      },
+      {
+        "src": "/images/469597607_1764965890989815_948276033177067036_n.jpg",
+        "alt": "Healthcare professional portrait in navy scrubs",
+        "width": 1440,
+        "height": 1800
+      },
+      {
+        "src": "/images/469641755_1329399818418481_1893241133985500969_n.jpg",
+        "alt": "Healthcare professional seated beside a display table",
+        "width": 1440,
+        "height": 1800
+      },
+      {
+        "src": "/images/port-6.jpg",
+        "alt": "Professional portrait in a patterned blouse",
+        "width": 1440,
+        "height": 1920
+      },
+      {
+        "src": "/images/fitness-image.jpg",
+        "alt": "Personal brand portrait in a fitness shirt",
+        "width": 1440,
+        "height": 1798
+      },
+      {
+        "src": "/images/fitness-image-2.jpg",
+        "alt": "Fitness brand portrait holding a dumbbell",
+        "width": 1440,
+        "height": 1918
+      },
+      {
+        "src": "/images/fitness-image-3.jpg",
+        "alt": "Fitness brand portrait with a dumbbell extended toward the camera",
+        "width": 1440,
+        "height": 1800
+      }
+    ]
+  }
 ];
+
+// Keep older collection links useful without displaying unsupported categories.
+export const PORTFOLIO_ALIASES = {
+  'product-commercial': 'headshots-branding',
+  'outdoor-lifestyle': 'studio-portraits',
+};

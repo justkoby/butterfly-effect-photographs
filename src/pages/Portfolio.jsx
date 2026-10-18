@@ -1,112 +1,29 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import SessionPackages from "../components/SessionPackages";
-import HowBookingWorks from "../components/HowBookingWorks";
-import { PORTFOLIO_CATEGORIES, BOOK_URL } from "../data/portfolioData";
-import "./Portfolio.css";
-
-// Hero images for the two scrolling columns
-const COL1 = ["/images/port-1.jpg", "/images/portrait-img.jpg", "/images/port-6.jpg", "/images/wedidngs.jpg"];
-const COL2 = ["/images/port-4.jpg", "/images/portrait-img-2.jpg", "/images/port-7.jpg", "/images/experience-image.webp"];
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import { PORTFOLIO_CATEGORIES } from '../data/portfolioData';
+import './Portfolio.css';
 
 export default function Portfolio() {
-  useEffect(() => {
-    document.title = "Portfolio Collections — Butterfly Effect Photographs";
-    window.scrollTo(0, 0);
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main className="pf-main">
-        {/* HERO */}
-        <section className="pf-hero">
-          <div className="pf-hero-text">
-            <p className="kicker">Curated Collections</p>
-            <h1 className="pf-hero-title">Choose Your<br /><em>Story</em></h1>
-            <p className="pf-hero-intro">
-              A curated selection of our finest works — portraits, weddings, beauty, and beyond.
-              Each collection is crafted with intention, tailored lighting, and authentic storytelling.
-            </p>
-            <div className="pf-hero-actions">
-              <a href={BOOK_URL} target="_blank" rel="noreferrer" className="btn btn-primary">
-                Book a Session
-              </a>
-              <Link to="/studio-rental" className="btn btn-outline">
-                Studio Rental Space
-              </Link>
-            </div>
-          </div>
-
-          <div className="pf-hero-cols">
-            <div className="pf-col pf-col-up">
-              {[...COL1, ...COL1].map((s, i) => (
-                <div className="pf-col-img" key={i}>
-                  <img src={s} alt="Portfolio highlight visual" loading="lazy" />
-                </div>
-              ))}
-            </div>
-            <div className="pf-col pf-col-down">
-              {[...COL2, ...COL2].map((s, i) => (
-                <div className="pf-col-img" key={i}>
-                  <img src={s} alt="Portfolio highlight visual" loading="lazy" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CATEGORY GRID — EVERY CARD LEADS TO A WORKING GALLERY */}
-        <section className="pf-categories">
-          <div className="pf-cat-header">
-            <p className="kicker">Browse by Category</p>
-            <h2 className="pf-cat-title">Explore the <em>Collections</em></h2>
-            <p className="pf-cat-subtitle">
-              Select any category to view its curated photograph sequence and dedicated booking options.
-            </p>
-          </div>
-          <div className="pf-cat-grid">
-            {PORTFOLIO_CATEGORIES.map((cat) => {
-              const targetHref = cat.slug === "wedding" ? "/portfolio/wedding" : `/portfolio/${cat.slug}`;
-              return (
-                <Link to={targetHref} className="pf-cat-card" key={cat.slug} tabIndex={0}>
-                  <div className="pf-cat-img">
-                    <img src={cat.cover} alt={`${cat.title} collection cover`} loading="lazy" />
-                    <div className="pf-cat-overlay" />
-                  </div>
-                  <div className="pf-cat-info">
-                    <h3>{cat.title}</h3>
-                    <p>{cat.tagline}</p>
-                    <span className="pf-cat-cta">Explore gallery ({cat.images.length} frames) →</span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* STUDIO PHOTOGRAPHY SESSION PACKAGES */}
-        <SessionPackages />
-
-        {/* HOW BOOKING WORKS SECTION */}
-        <section className="pf-booking-guide-section" aria-label="How booking works">
-          <div className="pf-booking-guide-container">
-            <HowBookingWorks mode="session" />
-            <div className="pf-guide-cta-row">
-              <a href={BOOK_URL} target="_blank" rel="noreferrer" className="btn btn-primary">
-                Reserve on Setmore Calendar
-              </a>
-              <Link to="/about" className="btn btn-outline">
-                Read About Our Studio
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </>
-  );
+  useEffect(() => { document.title = 'Photography Portfolio | Butterfly Effect Photographs'; }, []);
+  return <><Navbar /><main className="pf-main">
+    <header className="pf-intro">
+      <div><p className="kicker">Butterfly Effect Photographs · Selected work</p><h1>A little of <em>what we see.</em></h1></div>
+      <p>People, connection and the moments worth keeping. Find the collection that feels like you.</p>
+    </header>
+    <nav className="pf-collection-nav" aria-label="Jump to a collection">
+      {PORTFOLIO_CATEGORIES.map(cat => <a key={cat.slug} href={`#collection-${cat.slug}`}>{cat.navTitle}</a>)}
+    </nav>
+    <section className="pf-collections" aria-label="Photography collections">
+      <div className="pf-cat-grid">
+        {PORTFOLIO_CATEGORIES.map((cat, i) => <Link to={`/portfolio/${cat.slug}`} className="pf-cat-card" key={cat.slug} id={`collection-${cat.slug}`}>
+          <div className="pf-cat-img"><img src={cat.cover} alt={cat.images.find(img => img.src === cat.cover)?.alt || `${cat.title} photograph`} width={cat.images.find(img => img.src === cat.cover)?.width} height={cat.images.find(img => img.src === cat.cover)?.height} loading={i < 3 ? 'eager' : 'lazy'} /></div>
+          <div className="pf-cat-info"><div><span className="pf-cat-number">{String(i + 1).padStart(2, '0')}</span><h2>{cat.title}</h2></div><span className="pf-cat-arrow" aria-hidden="true">↗</span></div>
+          <p className="pf-cat-tagline">{cat.tagline}</p>
+        </Link>)}
+      </div>
+    </section>
+    <section className="pf-next-step" aria-labelledby="pf-next-title"><div><p className="kicker">Inspired by something?</p><h2 id="pf-next-title">Let’s make it <em>yours.</em></h2><p>Choose a package or bring your own idea. We’ll help shape the details.</p></div><div className="pf-next-actions"><Link to="/plan-your-shoot" className="btn btn-primary">Plan Your Shoot ✦</Link><Link to="/#packages" className="pf-pricing-link">View session packages →</Link></div></section>
+  </main><Footer /></>;
 }
-

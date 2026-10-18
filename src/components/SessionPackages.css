@@ -212,3 +212,5 @@
 .sp-session-filter button[aria-pressed="true"] { background: var(--pink); border-color: var(--pink); color: #25101a; font-weight: 600; }
 .sp-session-filter button:focus-visible { outline: 2px solid white; outline-offset: 4px; }
 .sp-session-caption { text-align: center; color: #c5bfbb; margin-bottom: 2.5rem; font-size: .85rem; }
+
+.session-packages { scroll-margin-top: calc(var(--nav-h) + 1rem); }
