@@ -1,34 +1,14 @@
 import { Link } from "react-router-dom";
 import "./SessionPackages.css";
 
-const BOOK_URL = "https://butterflyn21t.setmore.com/butterfly";
+import { PACKAGES, formatPrice } from "../data/studio";
 
-export const SESSION_PACKAGES = [
-  {
-    id: "pkg-1",
-    name: "Package I",
-    price: "GH₵400",
-    photos: "6 Retouched Photos",
-    outfits: "1 Outfit",
-    badge: null,
-  },
-  {
-    id: "pkg-2",
-    name: "Package II",
-    price: "GH₵600",
-    photos: "9 Retouched Photos",
-    outfits: "2 Outfits",
-    badge: "Most Popular",
-  },
-  {
-    id: "pkg-3",
-    name: "Package III",
-    price: "GH₵800",
-    photos: "12 Retouched Photos",
-    outfits: "3 Outfits",
-    badge: null,
-  },
-];
+const SESSION_PACKAGES = PACKAGES.map(pkg => ({
+  ...pkg,
+  price: formatPrice(pkg.price),
+  photos: `${pkg.photos} Retouched Photos`,
+  outfits: `${pkg.outfits} Outfit${pkg.outfits > 1 ? 's' : ''}`,
+}));
 
 export default function SessionPackages({ className = "" }) {
   return (
@@ -64,14 +44,12 @@ export default function SessionPackages({ className = "" }) {
                 </li>
               </ul>
 
-              <a
-                href={BOOK_URL}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                to={`/plan-your-shoot?package=${pkg.id}`}
                 className={`btn ${pkg.badge ? "btn-primary" : "btn-outline"} sp-card-btn`}
               >
-                Book Session
-              </a>
+                Plan This Session
+              </Link>
             </div>
           ))}
         </div>

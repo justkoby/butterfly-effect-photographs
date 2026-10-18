@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import "./Hero.css";
 
@@ -62,9 +63,9 @@ export default function Hero() {
           <a href={BOOK_URL} target="_blank" rel="noreferrer" className="btn btn-primary">
             Book a Session
           </a>
-          <a href="#about" className="btn btn-ghost">
-            Discover Our Work
-          </a>
+          <Link to="/plan-your-shoot" className="btn btn-ghost">
+            Plan Your Shoot ✦
+          </Link>
         </div>
       </div>
 

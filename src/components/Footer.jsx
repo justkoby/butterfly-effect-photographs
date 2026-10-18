@@ -36,6 +36,7 @@ export default function Footer() {
           <ul>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/portfolio">Portfolio</Link></li>
+            <li><Link to="/plan-your-shoot">Plan Your Shoot</Link></li>
             <li><a href="/#services">Services</a></li>
             <li><Link to="/studio-rental">Studio Rental</Link></li>
             <li><Link to="/makeup">Makeup &amp; Beauty</Link></li>

@@ -45,7 +45,7 @@ export default function Navbar() {
             </a>
           </li>
           <li><Link className="nav-link" to="/makeup">Makeup</Link></li>
-          <li><Link className="nav-link" to="/#contact">Contact</Link></li>
+          <li><Link className="nav-link" to="/plan-your-shoot">Plan a Shoot</Link></li>
           <li>
             <a href={BOOK_URL} target="_blank" rel="noreferrer" className="nav-book-btn">
               Book Now
@@ -69,6 +69,7 @@ export default function Navbar() {
         <ul>
           <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
           <li><Link to="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link></li>
+          <li><Link to="/plan-your-shoot" onClick={() => setOpen(false)}>Plan Your Shoot ✦</Link></li>
           <li><Link to="/studio-rental" onClick={() => setOpen(false)}>Studio Rental</Link></li>
           <li><Link to="/#services" onClick={() => setOpen(false)}>Services</Link></li>
           <li>

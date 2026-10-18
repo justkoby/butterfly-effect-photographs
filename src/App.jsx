@@ -6,6 +6,7 @@ import Portfolio from "./pages/Portfolio";
 import Makeup from "./pages/Makeup";
 import PortfolioWedding from "./pages/PortfolioWedding";
 import PortfolioCategory from "./pages/PortfolioCategory";
+import ShootPlanner from "./pages/ShootPlanner";
 import StudioRental from "./pages/StudioRental";
 
 function ScrollToTop() {
@@ -24,6 +25,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/plan-your-shoot" element={<ShootPlanner />} />
         <Route path="/about" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/portfolio/wedding" element={<PortfolioWedding />} />
@@ -34,5 +36,3 @@ export default function App() {
     </Router>
   );
 }
-
-
