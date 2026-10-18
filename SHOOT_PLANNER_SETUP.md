@@ -1,19 +1,19 @@
 # Shoot planner
 
-The `/plan-your-shoot` page combines a guided brief, approved individual studio packages, optional Gemini advice and a WhatsApp enquiry. Home, navigation, footer and package cards link to it. No database or new production dependencies are required.
+The `/plan-your-shoot` page combines a guided brief, approved individual, couple and family studio packages, optional Gemini advice and a WhatsApp enquiry. Home, navigation, footer and package cards link to it. No database or new production dependencies are required.
 
 ## Enable AI on Vercel
 
 1. Import this Vite repository into Vercel (build `npm run build`, output `dist`). `api/shoot-planner.js` is a Node function; `vercel.json` preserves API routes while supporting SPA deep links.
 2. Add **server-only** `GEMINI_API_KEY` and `GEMINI_MODEL` environment variables in Vercel. Choose an enabled text-generation model ID from your Google AI Studio account. No model is hardcoded. Never use `VITE_` for these variables or commit the key.
 3. Redeploy, open `/plan-your-shoot`, submit an idea and check for the “AI advice” status. Check a direct page refresh too.
-4. Confirm the approved contact in `src/data/studio.js` before launch. It uses the existing website/footer number, +233 55 839 9101. Confirm packages and the Setmore destination too.
+4. The new rate cards confirm the contact; verify any future changes in `src/data/studio.js` in the shared data. It uses the existing website/footer number, +233 55 839 9101. Confirm packages and the Setmore destination too.
 
 Plain `npm run dev` serves the frontend only: requests will fall back to the clearly labelled guided planner. Use Vercel's development runtime to exercise both frontend and function locally. A static/cPanel deployment needs a separately hosted same-origin `/api/shoot-planner` endpoint or reverse proxy; uploading only `dist` does not enable AI.
 
 ## Behaviour
 
-- Prices and quantities in cards and WhatsApp briefs come from `src/data/studio.js`, shared with the server. The outfit selector determines individual packages. Wedding/rental/other scopes request a quote. Group/commercial requests require studio confirmation.
+- Prices and quantities in cards and WhatsApp briefs come from `src/data/studio.js`, shared with the server. The outfit selector determines individual packages. Couple packages use photo count and maximum outfits. Family packages use family size and outfit ranges. The approved five/six-person family package includes six retouched photos. Wedding/rental/other scopes, families larger than six and unmatched selections request a quote. Commercial or additional requests require studio confirmation.
 - AI provides advice only. There is no calendar integration, payment collection, reservation or availability confirmation. Setmore opens separately; copy the brief into its notes.
 - A successful AI call sends the last few conversation turns and the current form details to Google. The page discloses this before submission. There is no application database or local/session storage; refresh clears the conversation. Provider/platform processing and logs follow their own settings.
 - Missing credentials, blocked responses, network errors and timeouts switch to an explicitly labelled guided response. The enquiry remains usable.

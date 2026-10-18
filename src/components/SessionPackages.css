@@ -206,3 +206,9 @@
     margin-right: auto;
   }
 }
+
+.sp-session-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: .6rem; margin: -1rem 0 1rem; }
+.sp-session-filter button { border: 1px solid #856775; border-radius: 999px; padding: .65rem 1.3rem; font-size: .85rem; }
+.sp-session-filter button[aria-pressed="true"] { background: var(--pink); border-color: var(--pink); color: #25101a; font-weight: 600; }
+.sp-session-filter button:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+.sp-session-caption { text-align: center; color: #c5bfbb; margin-bottom: 2.5rem; font-size: .85rem; }

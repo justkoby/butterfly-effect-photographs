@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { PACKAGES, SHOOT_TYPES, STUDIO, buildSummary, formatPrice, getPackage, guidedReply, suggestedPackage } from '../data/studio';
+import { SESSION_TYPES, SHOOT_TYPES, STUDIO, buildSummary, formatPrice, getPackage, guidedReply, suggestedPackage, outfitLabel, sessionForBrief } from '../data/studio';
 import './ShootPlanner.css';
 
 const STARTERS = ['I want a classy birthday shoot.', 'Help me prepare for professional headshots.', 'I feel awkward posing. Can you help?', 'I would like to rent the studio.'];
 export default function ShootPlanner() {
   const [params] = useSearchParams();
   const initial = getPackage(params.get('package'));
-  const [brief, setBrief] = useState({ type: 'Birthday', outfits: initial?.outfits || 1, style: '', date: '' });
+  const [brief, setBrief] = useState({ type: initial?.session === 'Couple' ? 'Couple' : initial?.session === 'Family' ? 'Family' : 'Birthday', session: initial?.session || 'Individual', outfits: initial?.outfits || 1, people: initial?.peopleMin || 3, photos: initial?.photos || 6, style: '', date: '' });
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
@@ -23,8 +23,22 @@ export default function ShootPlanner() {
   }, []);
   useEffect(() => { transcript.current?.scrollTo({ top: transcript.current.scrollHeight, behavior: 'smooth' }); }, [messages, busy]);
   const pkg = suggestedPackage(brief);
+  const session = sessionForBrief(brief);
   const summary = buildSummary(brief, pkg?.id, messages);
-  const update = (key, value) => { setBrief(old => ({ ...old, [key]: value })); setCopied(false); };
+  const update = (key, value) => {
+    setBrief(old => {
+      const next = { ...old, [key]: value };
+      if (key === 'session') {
+        next.type = value === 'Individual' ? 'Portrait' : value;
+        next.outfits = 1; next.photos = 6; next.people = 3;
+      }
+      if (key === 'type' && ['Couple', 'Family'].includes(value) && next.session !== value) {
+        next.session = value; next.photos = 6; next.outfits = 1; next.people = 3;
+      }
+      return next;
+    });
+    setCopied(false);
+  };
   async function send(text = input) {
     if (busy || !text.trim()) return;
     const next = [...messages, { role: 'user', text: text.trim().slice(0, 1200) }].slice(-11);
@@ -65,12 +79,15 @@ export default function ShootPlanner() {
         </form>
       </section>
       <aside className="planner-brief" aria-labelledby="planner-brief-title"><p className="kicker">Make it yours</p><h2 id="planner-brief-title">Your shoot brief</h2><p className="planner-muted">Edit these details anytime. They shape your package and enquiry.</p>
-        <div className="planner-fields"><label>Shoot type<select value={brief.type} onChange={e => update('type', e.target.value)} disabled={busy}>{SHOOT_TYPES.map(type => <option key={type}>{type}</option>)}</select></label>
-          <label>Outfits<select value={brief.outfits} onChange={e => update('outfits', Number(e.target.value))} disabled={busy}>{PACKAGES.map(p => <option key={p.id} value={p.outfits}>{p.outfits} outfit{p.outfits > 1 ? 's' : ''}</option>)}</select></label>
+        <div className="planner-fields"><label>Session category<select value={session} onChange={e => update('session', e.target.value)} disabled={busy}>{SESSION_TYPES.map(type => <option key={type}>{type}</option>)}</select></label>
+          <label>Shoot type<select value={brief.type} onChange={e => update('type', e.target.value)} disabled={busy}>{SHOOT_TYPES.map(type => <option key={type}>{type}</option>)}</select></label>
+          <label>Outfits<select value={brief.outfits} onChange={e => update('outfits', Number(e.target.value))} disabled={busy}>{[1, 2, 3].map(count => <option key={count} value={count}>{count} outfit{count > 1 ? 's' : ''}</option>)}</select></label>
+          {session === 'Couple' && <label>Retouched photos<select value={brief.photos} onChange={e => update('photos', Number(e.target.value))} disabled={busy}>{[6, 9, 12].map(count => <option key={count} value={count}>{count} photos</option>)}</select></label>}
+          {session === 'Family' && <label>Family size<select value={brief.people} onChange={e => update('people', Number(e.target.value))} disabled={busy}>{[3, 4, 5, 6, 7].map(count => <option key={count} value={count}>{count === 7 ? '7 or more people (custom quote)' : `${count} people`}</option>)}</select></label>}
           <label>Preferred date <span>(optional)</span><input type="date" value={brief.date} onChange={e => update('date', e.target.value)} disabled={busy} /></label>
           <label>Creative direction <span>(optional)</span><input maxLength={200} value={brief.style} onChange={e => update('style', e.target.value)} placeholder="Minimal, bold, romantic…" disabled={busy} /></label>
         </div>
-        <div className="planner-package" aria-live="polite"><p className="kicker">{pkg ? 'Individual studio package' : 'Tailored to your project'}</p><h3>{pkg ? `${pkg.name} · ${formatPrice(pkg.price)}` : 'Let’s discuss your scope'}</h3><p>{pkg ? `${pkg.photos} retouched photos · ${pkg.outfits} outfit${pkg.outfits > 1 ? 's' : ''}` : 'Wedding, rental and other projects need a quote from the studio.'}</p><small>{pkg ? 'For an individual studio session. Group, commercial or additional requirements need studio confirmation.' : 'Tell the team about your location, timing and requirements.'}</small></div>
+        <div className="planner-package" aria-live="polite"><p className="kicker">{pkg ? `${pkg.session} studio package` : 'Tailored to your project'}</p><h3>{pkg ? `${pkg.name} · ${formatPrice(pkg.price)}` : 'Let’s discuss your scope'}</h3><p>{pkg ? `${pkg.photos} retouched photos · ${outfitLabel(pkg)}` : 'No listed package matches these details. Adjust your selections or ask the studio for a tailored quote.'}</p><small>{pkg ? `For a ${pkg.session.toLowerCase()} studio session${pkg.peopleMin ? ` with ${pkg.peopleMin === pkg.peopleMax ? pkg.peopleMin : `${pkg.peopleMin}–${pkg.peopleMax}`} people` : ''}. Additional or commercial requirements need studio confirmation.` : 'Tell the team about your location, timing and requirements.'}</small></div>
         <details className="planner-summary"><summary>Review your enquiry</summary><pre>{summary}</pre></details>
         <a className="planner-whatsapp" href={`https://wa.me/${STUDIO.whatsapp}?text=${encodeURIComponent(summary)}`} target="_blank" rel="noreferrer">Send enquiry on WhatsApp ↗</a>
         <button className="planner-copy" onClick={copyBrief}>{copied ? 'Brief copied ✓' : 'Copy my brief'}</button>
